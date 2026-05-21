@@ -93,7 +93,7 @@ function confirmationHtml(data: { name: string }): string {
       </div>
       <div>
         <p style="margin:0;color:#0A0A0B;font-size:14px;font-weight:600;">Devixus Team</p>
-        <p style="margin:0;color:#71717A;font-size:13px;">Chittagong, Bangladesh · <a href="mailto:support@devixus.com" style="color:#5C4BFF;">support@devixus.com</a></p>
+        <p style="margin:0;color:#71717A;font-size:13px;">Chittagong, Bangladesh · <a href="mailto:contact@devixus.com" style="color:#5C4BFF;">contact@devixus.com</a></p>
       </div>
     </div>
   </div>
@@ -153,13 +153,13 @@ export async function POST(req: NextRequest) {
     await Promise.all([
       resend.emails.send({
         // Update `from` to a verified domain in production
-        from: "Devixus Contact <onboarding@resend.dev>",
-        to: "support@devixus.com",
+        from: "Devixus <contact@devixus.com>",
+        to: "contact@devixus.com",
         subject: `New project brief from ${name}`,
         html: notificationHtml({ name, email, whatsapp, budget, message }),
       }),
       resend.emails.send({
-        from: "Devixus <onboarding@resend.dev>",
+        from: "Devixus <contact@devixus.com>",
         to: email,
         subject: `We got your brief, ${name}`,
         html: confirmationHtml({ name }),
@@ -170,7 +170,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("[contact] Resend error:", err);
     return NextResponse.json(
-      { error: "Failed to send. Please email us at support@devixus.com." },
+      { error: "Failed to send. Please email us at contact@devixus.com." },
       { status: 500 }
     );
   }

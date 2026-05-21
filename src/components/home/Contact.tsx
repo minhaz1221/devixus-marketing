@@ -176,7 +176,7 @@ export default function Contact() {
             Tell us about your project. We read every message and reply within 24 hours.
           </p>
           <a
-            href="mailto:support@devixus.com"
+            href="mailto:contact@devixus.com"
             style={{
               color: "var(--glow)",
               fontSize: "16px",
@@ -186,7 +186,7 @@ export default function Contact() {
               marginBottom: "32px",
             }}
           >
-            support@devixus.com
+            contact@devixus.com
           </a>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
