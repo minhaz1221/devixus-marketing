@@ -2,7 +2,40 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { NAV_LINKS } from "@/lib/constants";
+
+const LEFT_LINKS = [
+  { label: "Work", href: "#work" },
+  { label: "Services", href: "#services" },
+];
+
+const RIGHT_LINKS = [
+  { label: "Widgets", href: "#widgets" },
+  { label: "Contact", href: "#contact" },
+];
+
+function NavLink({ href, label }: { href: string; label: string }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <Link
+      href={href}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        color: "rgba(255,255,255,0.8)",
+        textDecoration: "none",
+        fontSize: "15px",
+        fontWeight: 600,
+        padding: "13px 22px",
+        borderRadius: "999px",
+        background: hovered ? "rgba(255,255,255,0.12)" : "transparent",
+        transition: "background 0.15s",
+        whiteSpace: "nowrap",
+      }}
+    >
+      {label}
+    </Link>
+  );
+}
 
 export default function FloatingNav() {
   const [visible, setVisible] = useState(false);
@@ -13,7 +46,6 @@ export default function FloatingNav() {
         document.getElementById("hero")?.offsetHeight ?? 600;
       setVisible(window.scrollY > heroHeight * 0.8);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
@@ -31,41 +63,26 @@ export default function FloatingNav() {
         transition: "opacity 0.3s ease, transform 0.3s ease",
         pointerEvents: visible ? "auto" : "none",
         zIndex: 50,
-        minWidth: "580px",
         display: "flex",
         alignItems: "center",
-        gap: "4px",
         background: "var(--pulse)",
         borderRadius: "999px",
-        padding: "6px 6px 6px 20px",
+        padding: "6px",
         boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
       }}
     >
-      {NAV_LINKS.filter((l) => l.label !== "Contact").map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          style={{
-            color: "rgba(255,255,255,0.75)",
-            textDecoration: "none",
-            fontSize: "14px",
-            fontWeight: 500,
-            padding: "6px 14px",
-            borderRadius: "999px",
-            transition: "color 0.15s, background 0.15s",
-          }}
-        >
-          {link.label}
-        </Link>
+      {LEFT_LINKS.map((link) => (
+        <NavLink key={link.href} href={link.href} label={link.label} />
       ))}
 
-      {/* Spinning border CTA */}
+      {/* Spinning border CTA — center */}
       <div
         className="spinning-border"
         style={{
           padding: "2px",
           borderRadius: "999px",
-          marginLeft: "4px",
+          margin: "0 4px",
+          flexShrink: 0,
         }}
       >
         <Link
@@ -85,6 +102,10 @@ export default function FloatingNav() {
           Start a Project
         </Link>
       </div>
+
+      {RIGHT_LINKS.map((link) => (
+        <NavLink key={link.href} href={link.href} label={link.label} />
+      ))}
     </div>
   );
 }

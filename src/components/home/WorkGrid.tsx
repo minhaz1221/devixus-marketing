@@ -21,6 +21,7 @@ interface WorkCard {
 const BLUR_PLACEHOLDER =
   "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAoDASIAAhEBAxEB/8VAAAIBAgQE";
 
+// Images are 4:3 — request matching dimensions so Cloudinary doesn't crop
 const WORK: WorkCard[] = [
   {
     id: "vetted",
@@ -30,7 +31,7 @@ const WORK: WorkCard[] = [
     outcome: "→ 82% reduction in manual screening time",
     dark: true,
     accent: "#5C4BFF",
-    image: cldUrl("vetted", { width: 900, height: 560 }),
+    image: cldUrl("vetted", { width: 900, height: 675 }),
   },
   {
     id: "larrys",
@@ -40,7 +41,7 @@ const WORK: WorkCard[] = [
     outcome: "→ $40K in catering orders in first 3 months",
     dark: false,
     accent: "#F59E0B",
-    image: cldUrl("larrys-lunch", { width: 900, height: 560 }),
+    image: cldUrl("larrys-lunch", { width: 900, height: 675 }),
     imageFallbackGradient: "linear-gradient(135deg, #F59E0B 0%, #D97706 100%)",
   },
   {
@@ -61,7 +62,7 @@ const WORK: WorkCard[] = [
     outcome: "→ Launched in 6 weeks, 200+ active techs",
     dark: false,
     accent: "#3B82F6",
-    image: cldUrl("rebuld", { width: 900, height: 560 }),
+    image: cldUrl("rebuld", { width: 900, height: 675 }),
   },
   {
     id: "dedalus",
@@ -71,7 +72,7 @@ const WORK: WorkCard[] = [
     outcome: "→ Replaced 3 legacy tools with one interface",
     dark: true,
     accent: "#8B5CF6",
-    image: cldUrl("dedalus", { width: 900, height: 560 }),
+    image: cldUrl("dedalus", { width: 900, height: 675 }),
   },
   {
     id: "yellowai",
@@ -81,7 +82,7 @@ const WORK: WorkCard[] = [
     outcome: "→ 65% containment rate, zero escalation lag",
     dark: false,
     accent: "#EAB308",
-    image: cldUrl("yellow-ai", { width: 900, height: 560 }),
+    image: cldUrl("yellow-ai", { width: 900, height: 675 }),
   },
   {
     id: "rise",
@@ -91,19 +92,28 @@ const WORK: WorkCard[] = [
     outcome: "→ 3,400+ NFC activations in first quarter",
     dark: false,
     accent: "#EF4444",
-    image: cldUrl("rise-headwear", { width: 900, height: 560 }),
+    image: cldUrl("rise-headwear", { width: 900, height: 675 }),
     imageFallbackGradient: "linear-gradient(135deg, #EF4444 0%, #DC2626 100%)",
   },
 ];
 
-function CardImage({ card, imageHeight }: { card: WorkCard; imageHeight: number }) {
+function CardImage({
+  card,
+  hovered,
+  maxImageHeight,
+}: {
+  card: WorkCard;
+  hovered: boolean;
+  maxImageHeight?: number;
+}) {
   const [error, setError] = useState(false);
 
   if (!card.image || error) {
     return (
       <div
         style={{
-          height: imageHeight,
+          aspectRatio: "4/3",
+          maxHeight: maxImageHeight,
           background:
             card.imageFallbackGradient ??
             `linear-gradient(135deg, ${card.accent}40, ${card.accent}20)`,
@@ -114,7 +124,15 @@ function CardImage({ card, imageHeight }: { card: WorkCard; imageHeight: number 
   }
 
   return (
-    <div style={{ height: imageHeight, position: "relative", overflow: "hidden", flexShrink: 0 }}>
+    <div
+      style={{
+        aspectRatio: "4/3",
+        maxHeight: maxImageHeight,
+        position: "relative",
+        overflow: "hidden",
+        flexShrink: 0,
+      }}
+    >
       <Image
         src={card.image}
         alt={card.title}
@@ -123,7 +141,12 @@ function CardImage({ card, imageHeight }: { card: WorkCard; imageHeight: number 
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 900px"
         placeholder="blur"
         blurDataURL={BLUR_PLACEHOLDER}
-        style={{ objectFit: "cover", objectPosition: "top" }}
+        style={{
+          objectFit: "cover",
+          objectPosition: "center center",
+          transform: hovered ? "scale(1.03)" : "scale(1)",
+          transition: "transform 0.5s ease",
+        }}
         onError={() => setError(true)}
       />
     </div>
@@ -132,12 +155,10 @@ function CardImage({ card, imageHeight }: { card: WorkCard; imageHeight: number 
 
 function Card({
   card,
-  imageHeight = 260,
-  minHeight,
+  maxImageHeight,
 }: {
   card: WorkCard;
-  imageHeight?: number;
-  minHeight?: number;
+  maxImageHeight?: number;
 }) {
   const [hovered, setHovered] = useState(false);
 
@@ -150,16 +171,15 @@ function Card({
         overflow: "hidden",
         background: card.dark ? "var(--ink-2)" : "#fff",
         border: card.dark ? "1px solid rgba(255,255,255,0.06)" : "1px solid var(--g2)",
-        transition: "transform 0.25s ease, box-shadow 0.25s ease",
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
         height: "100%",
-        minHeight,
         display: "flex",
         flexDirection: "column",
         transform: hovered ? "translateY(-6px)" : "translateY(0)",
         boxShadow: hovered ? "0 32px 64px rgba(10,10,11,0.10)" : "none",
       }}
     >
-      <CardImage card={card} imageHeight={imageHeight} />
+      <CardImage card={card} hovered={hovered} maxImageHeight={maxImageHeight} />
 
       <div
         style={{
@@ -238,8 +258,9 @@ function CTACard() {
         padding: "28px",
         textAlign: "center",
         height: "100%",
+        minHeight: "200px",
         border: "1px solid rgba(255,255,255,0.08)",
-        transition: "transform 0.25s ease, box-shadow 0.25s ease",
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
         transform: hovered ? "translateY(-6px)" : "translateY(0)",
         boxShadow: hovered ? "0 32px 64px rgba(10,10,11,0.10)" : "none",
       }}
@@ -302,10 +323,10 @@ export default function WorkGrid() {
             marginBottom: "16px",
           }}
         >
-          <Card card={WORK[0]} imageHeight={260} minHeight={520} />
+          <Card card={WORK[0]} maxImageHeight={320} />
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            <Card card={WORK[1]} imageHeight={180} minHeight={250} />
-            <Card card={WORK[2]} imageHeight={180} minHeight={250} />
+            <Card card={WORK[1]} />
+            <Card card={WORK[2]} />
           </div>
         </div>
 
@@ -318,17 +339,17 @@ export default function WorkGrid() {
             marginBottom: "16px",
           }}
         >
-          <Card card={WORK[3]} imageHeight={180} minHeight={250} />
-          <Card card={WORK[4]} imageHeight={260} minHeight={520} />
+          <Card card={WORK[3]} />
+          <Card card={WORK[4]} maxImageHeight={320} />
         </div>
 
         {/* Row 3 — 1.55fr / 1fr */}
         <div
           style={{ display: "grid", gridTemplateColumns: "1.55fr 1fr", gap: "16px" }}
         >
-          <Card card={WORK[5]} imageHeight={260} minHeight={520} />
+          <Card card={WORK[5]} maxImageHeight={320} />
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            <Card card={WORK[6]} imageHeight={180} minHeight={250} />
+            <Card card={WORK[6]} />
             <CTACard />
           </div>
         </div>
