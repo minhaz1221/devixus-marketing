@@ -11,7 +11,8 @@ export function cldUrl(
     quality?: string;
     format?: string;
     crop?: string;
-  } = {}
+  } = {},
+  ext = ".jpg"
 ): string {
   if (!CLOUD_NAME) return UNSPLASH_FALLBACK;
 
@@ -33,7 +34,8 @@ export function cldUrl(
     .filter(Boolean)
     .join(",");
 
-  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${transforms}/devixus/projects/${publicId}`;
+  const suffix = publicId.includes(".") ? "" : ext;
+  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${transforms}/devixus/projects/${publicId}${suffix}`;
 }
 
 export function cldUrlRaw(
