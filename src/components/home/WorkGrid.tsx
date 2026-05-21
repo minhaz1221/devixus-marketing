@@ -30,7 +30,7 @@ const WORK: WorkCard[] = [
     outcome: "→ 82% reduction in manual screening time",
     dark: true,
     accent: "#5C4BFF",
-    image: cldUrl("vetted", { width: 900, height: 560 }, ".png"),
+    image: cldUrl("vetted", { width: 900, height: 560 }),
   },
   {
     id: "larrys",
@@ -71,7 +71,7 @@ const WORK: WorkCard[] = [
     outcome: "→ Replaced 3 legacy tools with one interface",
     dark: true,
     accent: "#8B5CF6",
-    image: cldUrl("dedalus", { width: 900, height: 560 }, ".png"),
+    image: cldUrl("dedalus", { width: 900, height: 560 }),
   },
   {
     id: "yellowai",
