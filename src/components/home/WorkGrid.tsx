@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { cldUrl } from "@/lib/cloudinary";
 
 interface WorkCard {
   id: string;
@@ -17,6 +18,9 @@ interface WorkCard {
   imageFallbackGradient?: string;
 }
 
+const BLUR_PLACEHOLDER =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAoDASIAAhEBAxEB/8VAAAIBAgQE";
+
 const WORK: WorkCard[] = [
   {
     id: "vetted",
@@ -26,7 +30,7 @@ const WORK: WorkCard[] = [
     outcome: "→ 82% reduction in manual screening time",
     dark: true,
     accent: "#5C4BFF",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800",
+    image: cldUrl("vetted", { width: 900, height: 560 }),
   },
   {
     id: "larrys",
@@ -36,7 +40,7 @@ const WORK: WorkCard[] = [
     outcome: "→ $40K in catering orders in first 3 months",
     dark: false,
     accent: "#F59E0B",
-    image: "/images/larrys-lunch.jpg",
+    image: cldUrl("larrys-lunch", { width: 900, height: 560 }),
     imageFallbackGradient: "linear-gradient(135deg, #F59E0B 0%, #D97706 100%)",
   },
   {
@@ -57,7 +61,7 @@ const WORK: WorkCard[] = [
     outcome: "→ Launched in 6 weeks, 200+ active techs",
     dark: false,
     accent: "#3B82F6",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
+    image: cldUrl("rebuld", { width: 900, height: 560 }),
   },
   {
     id: "dedalus",
@@ -67,7 +71,7 @@ const WORK: WorkCard[] = [
     outcome: "→ Replaced 3 legacy tools with one interface",
     dark: true,
     accent: "#8B5CF6",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800",
+    image: cldUrl("dedalus", { width: 900, height: 560 }),
   },
   {
     id: "yellowai",
@@ -77,7 +81,7 @@ const WORK: WorkCard[] = [
     outcome: "→ 65% containment rate, zero escalation lag",
     dark: false,
     accent: "#EAB308",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    image: cldUrl("yellow-ai", { width: 900, height: 560 }),
   },
   {
     id: "rise",
@@ -87,40 +91,25 @@ const WORK: WorkCard[] = [
     outcome: "→ 3,400+ NFC activations in first quarter",
     dark: false,
     accent: "#EF4444",
-    image: "/images/rise-headwear.jpg",
+    image: cldUrl("rise-headwear", { width: 900, height: 560 }),
     imageFallbackGradient: "linear-gradient(135deg, #EF4444 0%, #DC2626 100%)",
   },
 ];
 
 function CardImage({ card }: { card: WorkCard }) {
   const [error, setError] = useState(false);
-  const isExternal = card.image?.startsWith("http");
 
-  if (!card.image || error || (!isExternal && !card.image.startsWith("/"))) {
+  if (!card.image || error) {
     return (
       <div
         style={{
           height: "200px",
           background:
-            card.imageFallbackGradient ?? `linear-gradient(135deg, ${card.accent}40, ${card.accent}20)`,
+            card.imageFallbackGradient ??
+            `linear-gradient(135deg, ${card.accent}40, ${card.accent}20)`,
           flexShrink: 0,
         }}
       />
-    );
-  }
-
-  if (!isExternal) {
-    return (
-      <div style={{ height: "200px", position: "relative", overflow: "hidden", flexShrink: 0 }}>
-        <Image
-          src={card.image}
-          alt={card.title}
-          fill
-          sizes="(max-width: 768px) 100vw, 600px"
-          style={{ objectFit: "cover", objectPosition: "top" }}
-          onError={() => setError(true)}
-        />
-      </div>
     );
   }
 
@@ -130,7 +119,10 @@ function CardImage({ card }: { card: WorkCard }) {
         src={card.image}
         alt={card.title}
         fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+        unoptimized={false}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 900px"
+        placeholder="blur"
+        blurDataURL={BLUR_PLACEHOLDER}
         style={{ objectFit: "cover", objectPosition: "top" }}
         onError={() => setError(true)}
       />
