@@ -213,6 +213,7 @@ export default function Hero() {
               muted
               loop
               playsInline
+              poster="https://res.cloudinary.com/dqdnuqh0u/video/upload/so_0,q_auto,f_auto/devixus/projects/rebuld-demo.jpg"
               onError={() => setVideoError(true)}
               style={{
                 width: "100%",
@@ -224,6 +225,10 @@ export default function Hero() {
                 boxShadow: "0 40px 100px rgba(0,0,0,0.5)",
               }}
             >
+              <source
+                src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/devixus/projects/rebuld-demo"
+                type="video/mp4"
+              />
               <source src="/videos/rebuld-demo.mp4" type="video/mp4" />
             </video>
           ) : (
