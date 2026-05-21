@@ -8,15 +8,15 @@ export default function FloatingNav() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const hero = document.getElementById("hero");
-    if (!hero) return;
+    const handleScroll = () => {
+      const heroHeight =
+        document.getElementById("hero")?.offsetHeight ?? 600;
+      setVisible(window.scrollY > heroHeight * 0.8);
+    };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
-      { threshold: 0 }
-    );
-    observer.observe(hero);
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (

@@ -5,7 +5,7 @@ import ScrollToTop from "@/components/layout/ScrollToTop";
 import Hero from "@/components/home/Hero";
 import Marquee from "@/components/home/Marquee";
 import WorkGrid from "@/components/home/WorkGrid";
-import AiConnected from "@/components/home/AiConnected";
+import Showcase from "@/components/home/Showcase";
 import AiSection from "@/components/home/AiSection";
 import WidgetsCard from "@/components/home/WidgetsCard";
 import Reviews from "@/components/home/Reviews";
@@ -20,7 +20,7 @@ export default function Home() {
         <Hero />
         <Marquee />
         <WorkGrid />
-        <AiConnected />
+        <Showcase />
         <AiSection />
         <WidgetsCard />
         <Reviews />

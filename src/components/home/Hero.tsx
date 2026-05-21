@@ -157,7 +157,7 @@ export default function Hero() {
           </div>
 
           {/* Cycling review cards */}
-          <div style={{ position: "relative", height: "148px", marginTop: "8px" }}>
+          <div style={{ position: "relative", height: "220px", marginTop: "8px" }}>
             {heroReviews.map((review, i) => (
               <div
                 key={review.name}

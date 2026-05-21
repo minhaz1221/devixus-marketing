@@ -103,7 +103,7 @@ function CardImage({ card }: { card: WorkCard }) {
     return (
       <div
         style={{
-          height: "200px",
+          aspectRatio: "16/9",
           background:
             card.imageFallbackGradient ??
             `linear-gradient(135deg, ${card.accent}40, ${card.accent}20)`,
@@ -114,7 +114,7 @@ function CardImage({ card }: { card: WorkCard }) {
   }
 
   return (
-    <div style={{ height: "200px", position: "relative", overflow: "hidden", flexShrink: 0 }}>
+    <div style={{ aspectRatio: "16/9", position: "relative", overflow: "hidden", flexShrink: 0 }}>
       <Image
         src={card.image}
         alt={card.title}
@@ -138,7 +138,7 @@ function Card({ card }: { card: WorkCard }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        borderRadius: "16px",
+        borderRadius: "20px",
         overflow: "hidden",
         background: card.dark ? "var(--ink-2)" : "#fff",
         border: card.dark ? "1px solid rgba(255,255,255,0.06)" : "1px solid var(--g2)",
@@ -148,9 +148,7 @@ function Card({ card }: { card: WorkCard }) {
         flexDirection: "column",
         transform: hovered ? "translateY(-6px)" : "translateY(0)",
         boxShadow: hovered
-          ? card.dark
-            ? "0 20px 60px rgba(0,0,0,0.5)"
-            : "0 20px 60px rgba(0,0,0,0.12)"
+          ? "0 32px 64px rgba(10,10,11,0.10)"
           : "none",
       }}
     >
@@ -191,7 +189,7 @@ function Card({ card }: { card: WorkCard }) {
         </h3>
         <p
           style={{
-            fontSize: "14px",
+            fontSize: "15px",
             lineHeight: 1.6,
             color: card.dark ? "rgba(255,255,255,0.55)" : "var(--g5)",
             flex: 1,
@@ -202,9 +200,9 @@ function Card({ card }: { card: WorkCard }) {
         </p>
         <p
           style={{
-            fontSize: "13px",
+            fontSize: "14px",
             fontStyle: "italic",
-            color: card.accent,
+            color: "var(--pulse)",
             fontWeight: 600,
           }}
         >
@@ -223,7 +221,7 @@ function CTACard() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        borderRadius: "16px",
+        borderRadius: "20px",
         background: "var(--ink)",
         display: "flex",
         flexDirection: "column",
@@ -235,7 +233,7 @@ function CTACard() {
         border: "1px solid rgba(255,255,255,0.08)",
         transition: "transform 0.25s ease, box-shadow 0.25s ease",
         transform: hovered ? "translateY(-6px)" : "translateY(0)",
-        boxShadow: hovered ? "0 20px 60px rgba(0,0,0,0.5)" : "none",
+        boxShadow: hovered ? "0 32px 64px rgba(10,10,11,0.10)" : "none",
       }}
     >
       <p
