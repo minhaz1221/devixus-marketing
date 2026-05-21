@@ -77,7 +77,7 @@ export default function Reviews() {
   const row2 = [...REVIEWS.slice(3), ...REVIEWS.slice(3)];
 
   return (
-    <section style={{ background: "#F7F7F7", padding: "120px 0", overflow: "hidden" }}>
+    <section className="section-pad" style={{ background: "#F7F7F7", overflow: "hidden" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
         <SectionHeader eyebrow="Client reviews" title="Chosen by real brands." />
       </div>

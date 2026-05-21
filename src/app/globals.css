@@ -54,6 +54,9 @@ body {
 }
 ::selection { background: var(--glow); color: var(--ink); }
 
+/* ── Shared section padding ── */
+.section-pad { padding: 120px 0; }
+
 /* ── Marquee animations ── */
 @keyframes marquee {
   from { transform: translateX(0); }

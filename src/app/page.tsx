@@ -19,8 +19,8 @@ export default function Home() {
       <main>
         <Hero />
         <Marquee />
-        <WorkGrid />
         <Showcase />
+        <WorkGrid />
         <AiSection />
         <WidgetsCard />
         <Reviews />

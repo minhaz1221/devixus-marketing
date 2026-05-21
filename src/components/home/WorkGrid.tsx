@@ -96,14 +96,14 @@ const WORK: WorkCard[] = [
   },
 ];
 
-function CardImage({ card }: { card: WorkCard }) {
+function CardImage({ card, imageHeight }: { card: WorkCard; imageHeight: number }) {
   const [error, setError] = useState(false);
 
   if (!card.image || error) {
     return (
       <div
         style={{
-          aspectRatio: "16/9",
+          height: imageHeight,
           background:
             card.imageFallbackGradient ??
             `linear-gradient(135deg, ${card.accent}40, ${card.accent}20)`,
@@ -114,7 +114,7 @@ function CardImage({ card }: { card: WorkCard }) {
   }
 
   return (
-    <div style={{ aspectRatio: "16/9", position: "relative", overflow: "hidden", flexShrink: 0 }}>
+    <div style={{ height: imageHeight, position: "relative", overflow: "hidden", flexShrink: 0 }}>
       <Image
         src={card.image}
         alt={card.title}
@@ -130,7 +130,15 @@ function CardImage({ card }: { card: WorkCard }) {
   );
 }
 
-function Card({ card }: { card: WorkCard }) {
+function Card({
+  card,
+  imageHeight = 260,
+  minHeight,
+}: {
+  card: WorkCard;
+  imageHeight?: number;
+  minHeight?: number;
+}) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -144,19 +152,18 @@ function Card({ card }: { card: WorkCard }) {
         border: card.dark ? "1px solid rgba(255,255,255,0.06)" : "1px solid var(--g2)",
         transition: "transform 0.25s ease, box-shadow 0.25s ease",
         height: "100%",
+        minHeight,
         display: "flex",
         flexDirection: "column",
         transform: hovered ? "translateY(-6px)" : "translateY(0)",
-        boxShadow: hovered
-          ? "0 32px 64px rgba(10,10,11,0.10)"
-          : "none",
+        boxShadow: hovered ? "0 32px 64px rgba(10,10,11,0.10)" : "none",
       }}
     >
-      <CardImage card={card} />
+      <CardImage card={card} imageHeight={imageHeight} />
 
       <div
         style={{
-          padding: "24px 24px 20px",
+          padding: "28px 30px 32px",
           flex: 1,
           display: "flex",
           flexDirection: "column",
@@ -181,6 +188,7 @@ function Card({ card }: { card: WorkCard }) {
             fontWeight: 700,
             fontSize: "20px",
             lineHeight: 1.25,
+            letterSpacing: "-0.02em",
             color: card.dark ? "#fff" : "var(--ink)",
             marginBottom: "8px",
           }}
@@ -281,8 +289,8 @@ function CTACard() {
 
 export default function WorkGrid() {
   return (
-    <section id="work" style={{ background: "#fff", padding: "120px 0" }}>
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+    <section id="work" className="section-pad" style={{ background: "#fff" }}>
+      <div style={{ maxWidth: "1480px", margin: "0 auto", padding: "0 24px" }}>
         <SectionHeader eyebrow="Selected work" title="The work, up close." />
 
         {/* Row 1 — 1.55fr / 1fr */}
@@ -290,14 +298,14 @@ export default function WorkGrid() {
           style={{
             display: "grid",
             gridTemplateColumns: "1.55fr 1fr",
-            gap: "20px",
-            marginBottom: "20px",
+            gap: "16px",
+            marginBottom: "16px",
           }}
         >
-          <Card card={WORK[0]} />
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-            <Card card={WORK[1]} />
-            <Card card={WORK[2]} />
+          <Card card={WORK[0]} imageHeight={260} minHeight={520} />
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <Card card={WORK[1]} imageHeight={180} minHeight={250} />
+            <Card card={WORK[2]} imageHeight={180} minHeight={250} />
           </div>
         </div>
 
@@ -306,21 +314,21 @@ export default function WorkGrid() {
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1.55fr",
-            gap: "20px",
-            marginBottom: "20px",
+            gap: "16px",
+            marginBottom: "16px",
           }}
         >
-          <Card card={WORK[3]} />
-          <Card card={WORK[4]} />
+          <Card card={WORK[3]} imageHeight={180} minHeight={250} />
+          <Card card={WORK[4]} imageHeight={260} minHeight={520} />
         </div>
 
         {/* Row 3 — 1.55fr / 1fr */}
         <div
-          style={{ display: "grid", gridTemplateColumns: "1.55fr 1fr", gap: "20px" }}
+          style={{ display: "grid", gridTemplateColumns: "1.55fr 1fr", gap: "16px" }}
         >
-          <Card card={WORK[5]} />
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-            <Card card={WORK[6]} />
+          <Card card={WORK[5]} imageHeight={260} minHeight={520} />
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <Card card={WORK[6]} imageHeight={180} minHeight={250} />
             <CTACard />
           </div>
         </div>

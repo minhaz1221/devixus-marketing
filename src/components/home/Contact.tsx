@@ -104,9 +104,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
+      className="section-pad"
       style={{
         background: "var(--ink)",
-        padding: "120px 0",
         position: "relative",
         overflow: "hidden",
       }}

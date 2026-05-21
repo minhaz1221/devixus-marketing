@@ -148,7 +148,8 @@ export default function AiSection() {
   return (
     <section
       id="services"
-      style={{ background: "var(--ink)", padding: "120px 0" }}
+      className="section-pad"
+      style={{ background: "var(--ink)" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
         <SectionHeader

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { REVIEWS } from "@/lib/constants";
+import { cldUrl } from "@/lib/cloudinary";
 
 const heroReviews = REVIEWS.slice(0, 4);
 
@@ -234,38 +235,85 @@ export default function Hero() {
           ) : (
             <div
               style={{
-                width: "100%",
-                minHeight: "540px",
-                borderRadius: "3px",
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)",
-                boxShadow: "0 40px 100px rgba(0,0,0,0.5)",
-                border: "1px solid rgba(255,255,255,0.12)",
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "12px",
+                gap: "16px",
+                height: "100%",
+                minHeight: "540px",
               }}
             >
+              {/* Top card — AirAxis */}
               <div
                 style={{
-                  width: "56px",
-                  height: "56px",
-                  borderRadius: "50%",
-                  background: "rgba(255,255,255,0.1)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  flex: 1,
+                  borderRadius: "3px",
+                  overflow: "hidden",
+                  position: "relative",
+                  boxShadow: "0 24px 60px rgba(0,0,0,0.5)",
                 }}
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path d="M8 5l11 7-11 7V5z" fill="rgba(255,255,255,0.5)" />
-                </svg>
+                <Image
+                  src={cldUrl("airaxis")}
+                  alt="AirAxis dashboard"
+                  fill
+                  sizes="(max-width: 1280px) 60vw, 800px"
+                  style={{ objectFit: "cover", objectPosition: "top" }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    padding: "16px 20px",
+                    background: "linear-gradient(to top, rgba(0,0,0,0.75), transparent)",
+                  }}
+                >
+                  <p style={{ color: "#fff", fontWeight: 700, fontSize: "15px", lineHeight: 1.3 }}>
+                    AirAxis
+                  </p>
+                  <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "12px" }}>
+                    SaaS · Dashboard
+                  </p>
+                </div>
               </div>
-              <span style={{ color: "rgba(255,255,255,0.35)", fontSize: "13px" }}>
-                Demo video coming soon
-              </span>
+
+              {/* Bottom card — Beauty (indented) */}
+              <div
+                style={{
+                  flex: "0 0 200px",
+                  marginLeft: "20%",
+                  borderRadius: "3px",
+                  overflow: "hidden",
+                  position: "relative",
+                  boxShadow: "0 24px 60px rgba(0,0,0,0.5)",
+                }}
+              >
+                <Image
+                  src={cldUrl("beauty")}
+                  alt="Beauty Commerce"
+                  fill
+                  sizes="(max-width: 1280px) 45vw, 640px"
+                  style={{ objectFit: "cover", objectPosition: "top" }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    padding: "16px 20px",
+                    background: "linear-gradient(to top, rgba(0,0,0,0.75), transparent)",
+                  }}
+                >
+                  <p style={{ color: "#fff", fontWeight: 700, fontSize: "15px", lineHeight: 1.3 }}>
+                    Beauty Commerce
+                  </p>
+                  <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "12px" }}>
+                    Mobile App
+                  </p>
+                </div>
+              </div>
             </div>
           )}
         </div>

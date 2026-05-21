@@ -13,7 +13,7 @@ const CODE_SNIPPET = `<script
 
 export default function WidgetsCard() {
   return (
-    <section id="widgets" style={{ background: "#fff", padding: "120px 0" }}>
+    <section id="widgets" className="section-pad" style={{ background: "#fff" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
           <p
