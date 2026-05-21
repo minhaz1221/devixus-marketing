@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0A0A0B;
+  --color-ink-2: #141417;
+  --color-ink-3: #1E1E22;
+  --color-pulse: #5C4BFF;
+  --color-pulse-deep: #4232E6;
+  --color-pulse-deeper: #3621B8;
+  --color-glow: #C9FF3B;
+  --color-mist: #F5F4F0;
+  --color-bone: #EDEAE2;
+  --color-g2: #E4E4E7;
+  --color-g3: #D4D4D8;
+  --color-g4: #A1A1AA;
+  --color-g5: #71717A;
+  --color-g6: #52525B;
+}
+
+:root {
+  --ink: #0A0A0B;
+  --ink-2: #141417;
+  --ink-3: #1E1E22;
+  --pulse: #5C4BFF;
+  --pulse-deep: #4232E6;
+  --pulse-deeper: #3621B8;
+  --glow: #C9FF3B;
+  --mist: #F5F4F0;
+  --bone: #EDEAE2;
+  --g2: #E4E4E7;
+  --g3: #D4D4D8;
+  --g4: #A1A1AA;
+  --g5: #71717A;
+  --g6: #52525B;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  color: var(--ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--glow); color: var(--ink); }
+
+/* ── Marquee animations ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-30 { animation: marquee 30s linear infinite; }
+.marquee-28 { animation: marquee 28s linear infinite; }
+.marquee-40 { animation: marquee 40s linear infinite; }
+.marquee-48 { animation: marquee 48s linear infinite reverse; }
+
+.marquee-30:hover,
+.marquee-28:hover,
+.marquee-40:hover,
+.marquee-48:hover {
+  animation-play-state: paused;
+}
+
+/* ── Spinning border for FloatingNav CTA ── */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-angle {
+  to { --angle: 360deg; }
+}
+
+.spinning-border {
+  background: conic-gradient(from var(--angle), #5C4BFF, #C9FF3B, #5C4BFF);
+  animation: spin-angle 2.5s linear infinite;
+}
+
+/* ── Blinking dot ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.blink { animation: blink 1.4s ease-in-out infinite; }
+
+/* ── AiConnected hub pulsing rings ── */
+@keyframes hub-ring {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.hub-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--pulse);
+  animation: hub-ring 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.hub-ring-2 {
+  animation-delay: 0.75s;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-30,
+  .marquee-28,
+  .marquee-40,
+  .marquee-48 { animation: none; }
+  .spinning-border { animation: none; background: var(--glow); }
+  .blink { animation: none; }
+  .hub-ring { animation: none; }
+}
