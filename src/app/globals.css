@@ -102,7 +102,13 @@ body {
 }
 .blink { animation: blink 1.4s ease-in-out infinite; }
 
-/* ── AiConnected hub pulsing rings ── */
+/* ── AiConnected hub animations ── */
+@keyframes hub-pulse {
+  0%, 100% { box-shadow: 0 0 0 12px rgba(92,75,255,0.15), 0 0 0 24px rgba(92,75,255,0.07); }
+  50%       { box-shadow: 0 0 0 18px rgba(92,75,255,0.2),  0 0 0 36px rgba(92,75,255,0.08); }
+}
+.hub-pulse { animation: hub-pulse 2.5s ease-in-out infinite; }
+
 @keyframes hub-ring {
   0%   { transform: scale(1);   opacity: 0.55; }
   100% { transform: scale(2.2); opacity: 0; }
@@ -131,5 +137,6 @@ body {
   .marquee-48 { animation: none; }
   .spinning-border { animation: none; background: var(--glow); }
   .blink { animation: none; }
+  .hub-pulse { animation: none; }
   .hub-ring { animation: none; }
 }

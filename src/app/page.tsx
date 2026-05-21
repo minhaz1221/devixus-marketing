@@ -6,6 +6,7 @@ import Hero from "@/components/home/Hero";
 import Marquee from "@/components/home/Marquee";
 import WorkGrid from "@/components/home/WorkGrid";
 import Showcase from "@/components/home/Showcase";
+import AiConnected from "@/components/home/AiConnected";
 import AiSection from "@/components/home/AiSection";
 import WidgetsCard from "@/components/home/WidgetsCard";
 import Reviews from "@/components/home/Reviews";
@@ -21,6 +22,7 @@ export default function Home() {
         <Marquee />
         <Showcase />
         <WorkGrid />
+        <AiConnected />
         <AiSection />
         <WidgetsCard />
         <Reviews />
