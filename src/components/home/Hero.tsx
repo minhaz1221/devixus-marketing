@@ -4,13 +4,11 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { REVIEWS } from "@/lib/constants";
-import { cldUrl } from "@/lib/cloudinary";
 
 const heroReviews = REVIEWS.slice(0, 4);
 
 export default function Hero() {
   const [activeIdx, setActiveIdx] = useState(0);
-  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
     const id = setInterval(
@@ -207,115 +205,35 @@ export default function Hero() {
         </div>
 
         {/* ── Right column — video ── */}
-        <div style={{ position: "relative", minHeight: "540px" }}>
-          {!videoError ? (
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="https://res.cloudinary.com/dqdnuqh0u/video/upload/so_0,q_auto,f_auto/devixus/projects/rebuld-demo.jpg"
-              onError={() => setVideoError(true)}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                borderRadius: "3px",
-                minHeight: "540px",
-                display: "block",
-                boxShadow: "0 40px 100px rgba(0,0,0,0.5)",
-              }}
-            >
-              <source
-                src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/devixus/projects/rebuld-demo"
-                type="video/mp4"
-              />
-              <source src="/videos/rebuld-demo.mp4" type="video/mp4" />
-            </video>
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "16px",
-                height: "100%",
-                minHeight: "540px",
-              }}
-            >
-              {/* Top card — AirAxis */}
-              <div
-                style={{
-                  flex: 1,
-                  borderRadius: "3px",
-                  overflow: "hidden",
-                  position: "relative",
-                  boxShadow: "0 24px 60px rgba(0,0,0,0.5)",
-                }}
-              >
-                <Image
-                  src={cldUrl("airaxis")}
-                  alt="AirAxis dashboard"
-                  fill
-                  sizes="(max-width: 1280px) 60vw, 800px"
-                  style={{ objectFit: "cover", objectPosition: "top" }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    padding: "16px 20px",
-                    background: "linear-gradient(to top, rgba(0,0,0,0.75), transparent)",
-                  }}
-                >
-                  <p style={{ color: "#fff", fontWeight: 700, fontSize: "15px", lineHeight: 1.3 }}>
-                    AirAxis
-                  </p>
-                  <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "12px" }}>
-                    SaaS · Dashboard
-                  </p>
-                </div>
-              </div>
-
-              {/* Bottom card — Beauty (indented) */}
-              <div
-                style={{
-                  flex: "0 0 200px",
-                  marginLeft: "20%",
-                  borderRadius: "3px",
-                  overflow: "hidden",
-                  position: "relative",
-                  boxShadow: "0 24px 60px rgba(0,0,0,0.5)",
-                }}
-              >
-                <Image
-                  src={cldUrl("beauty")}
-                  alt="Beauty Commerce"
-                  fill
-                  sizes="(max-width: 1280px) 45vw, 640px"
-                  style={{ objectFit: "cover", objectPosition: "top" }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    padding: "16px 20px",
-                    background: "linear-gradient(to top, rgba(0,0,0,0.75), transparent)",
-                  }}
-                >
-                  <p style={{ color: "#fff", fontWeight: 700, fontSize: "15px", lineHeight: 1.3 }}>
-                    Beauty Commerce
-                  </p>
-                  <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "12px" }}>
-                    Mobile App
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
+        <div
+          style={{
+            borderRadius: "3px",
+            overflow: "hidden",
+            minHeight: "540px",
+            boxShadow: "0 40px 100px rgba(0,0,0,0.5)",
+            background: "var(--ink)",
+            width: "100%",
+          }}
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              width: "100%",
+              height: "100%",
+              minHeight: "540px",
+              objectFit: "cover",
+              display: "block",
+              borderRadius: "3px",
+            }}
+          >
+            <source
+              src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/rebuld-demo"
+              type="video/mp4"
+            />
+          </video>
         </div>
       </div>
     </section>
