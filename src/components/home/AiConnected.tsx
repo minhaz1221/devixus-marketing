@@ -162,14 +162,15 @@ function Hub() {
         <div className="hub-ring" />
         <div className="hub-ring hub-ring-2" />
         <svg
-          width="40"
-          height="40"
-          viewBox="0 0 40 40"
+          width="44"
+          height="44"
+          viewBox="0 0 44 44"
           fill="none"
+          xmlns="http://www.w3.org/2000/svg"
           style={{ position: "relative", zIndex: 1 }}
         >
-          <line x1="9" y1="9" x2="31" y2="31" stroke="#C9FF3B" strokeWidth="6" strokeLinecap="round" />
-          <line x1="31" y1="9" x2="9" y2="31" stroke="rgba(255,255,255,0.75)" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="10" y1="10" x2="34" y2="34" stroke="#C9FF3B" strokeWidth="7" strokeLinecap="round" />
+          <line x1="34" y1="10" x2="10" y2="34" stroke="rgba(255,255,255,0.7)" strokeWidth="3" strokeLinecap="round" />
         </svg>
       </div>
     </div>
@@ -195,33 +196,33 @@ function ConnectingLines() {
         overflow: "visible",
         zIndex: 0,
       }}
-      viewBox="0 0 1100 560"
+      viewBox="0 0 1100 640"
       preserveAspectRatio="xMidYMid meet"
     >
       {/* Horizontal spine through hub */}
-      <line x1="160" y1="280" x2="940" y2="280" {...lp} />
+      <line x1="155" y1="320" x2="945" y2="320" {...lp} />
 
-      {/* Vertical: hub up to top-center card */}
-      <line x1="550" y1="260" x2="550" y2="170" {...lp} />
+      {/* Hub up to top-center card bottom */}
+      <line x1="550" y1="320" x2="550" y2="265" {...lp} />
 
-      {/* Vertical: hub down to bottom-center card */}
-      <line x1="550" y1="300" x2="550" y2="380" {...lp} />
+      {/* Hub down to bottom-center card top */}
+      <line x1="550" y1="320" x2="550" y2="375" {...lp} />
 
-      {/* Left dot → top-left card */}
-      <line x1="160" y1="280" x2="183" y2="170" {...lp} />
+      {/* Left dot up to top-left card bottom */}
+      <line x1="155" y1="320" x2="183" y2="265" {...lp} />
 
-      {/* Left dot → bottom-left card */}
-      <line x1="160" y1="280" x2="183" y2="380" {...lp} />
+      {/* Left dot down to bottom-left card top */}
+      <line x1="155" y1="320" x2="183" y2="375" {...lp} />
 
-      {/* Right dot → top-right card */}
-      <line x1="940" y1="280" x2="917" y2="170" {...lp} />
+      {/* Right dot up to top-right card bottom */}
+      <line x1="945" y1="320" x2="917" y2="265" {...lp} />
 
-      {/* Right dot → bottom-right card */}
-      <line x1="940" y1="280" x2="917" y2="380" {...lp} />
+      {/* Right dot down to bottom-right card top */}
+      <line x1="945" y1="320" x2="917" y2="375" {...lp} />
 
-      {/* Endpoint dots on spine */}
-      <circle cx="160" cy="280" r="5" fill="#5C4BFF" />
-      <circle cx="940" cy="280" r="5" fill="#5C4BFF" />
+      {/* Endpoint dots */}
+      <circle cx="155" cy="320" r="5" fill="#5C4BFF" />
+      <circle cx="945" cy="320" r="5" fill="#5C4BFF" />
     </svg>
   );
 }
