@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -16,6 +16,7 @@ interface WorkCard {
   accent: string;
   image?: string;
   imageFallbackGradient?: string;
+  slug?: string;
 }
 
 const BLUR_PLACEHOLDER =
@@ -43,6 +44,7 @@ const WORK: WorkCard[] = [
     accent: "#F59E0B",
     image: cldUrl("larrys-lunch", { width: 900, height: 675 }),
     imageFallbackGradient: "linear-gradient(135deg, #F59E0B 0%, #D97706 100%)",
+    slug: "larrys-lunch",
   },
   {
     id: "nunhems",
@@ -53,6 +55,7 @@ const WORK: WorkCard[] = [
     dark: true,
     accent: "#F39500",
     imageFallbackGradient: "linear-gradient(135deg, #F39500 0%, #E8850A 100%)",
+    slug: "nunhems-quiniela",
   },
   {
     id: "rebuld",
@@ -94,6 +97,7 @@ const WORK: WorkCard[] = [
     accent: "#EF4444",
     image: cldUrl("rise-headwear", { width: 900, height: 675 }),
     imageFallbackGradient: "linear-gradient(135deg, #EF4444 0%, #DC2626 100%)",
+    slug: "rise-headwear",
   },
 ];
 
@@ -118,8 +122,36 @@ function CardImage({
             card.imageFallbackGradient ??
             `linear-gradient(135deg, ${card.accent}40, ${card.accent}20)`,
           flexShrink: 0,
+          position: "relative",
         }}
-      />
+      >
+        {card.slug && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)",
+              padding: "20px 16px 12px",
+              opacity: hovered ? 1 : 0,
+              transition: "opacity 0.3s ease",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "14px",
+                color: "#fff",
+                fontFamily: "var(--font-space)",
+                fontWeight: 600,
+                letterSpacing: "0.02em",
+              }}
+            >
+              View case study →
+            </span>
+          </div>
+        )}
+      </div>
     );
   }
 
@@ -149,6 +181,32 @@ function CardImage({
         }}
         onError={() => setError(true)}
       />
+      {card.slug && (
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)",
+            padding: "20px 16px 12px",
+            opacity: hovered ? 1 : 0,
+            transition: "opacity 0.3s ease",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "14px",
+              color: "#fff",
+              fontFamily: "var(--font-space)",
+              fontWeight: 600,
+              letterSpacing: "0.02em",
+            }}
+          >
+            View case study →
+          </span>
+        </div>
+      )}
     </div>
   );
 }
@@ -162,25 +220,25 @@ function Card({
 }) {
   const [hovered, setHovered] = useState(false);
 
-  return (
-    <article
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        borderRadius: "20px",
-        overflow: "hidden",
-        background: card.dark ? "var(--ink-2)" : "#fff",
-        border: card.dark ? "1px solid rgba(255,255,255,0.06)" : "1px solid var(--g2)",
-        transition: "transform 0.3s ease, box-shadow 0.3s ease",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        transform: hovered ? "translateY(-6px)" : "translateY(0)",
-        boxShadow: hovered ? "0 32px 64px rgba(10,10,11,0.10)" : "none",
-      }}
-    >
-      <CardImage card={card} hovered={hovered} maxImageHeight={maxImageHeight} />
+  const articleStyle: React.CSSProperties = {
+    borderRadius: "20px",
+    overflow: "hidden",
+    background: card.dark ? "var(--ink-2)" : "#fff",
+    border: card.dark ? "1px solid rgba(255,255,255,0.06)" : "1px solid var(--g2)",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    transform: hovered ? "translateY(-6px)" : "translateY(0)",
+    boxShadow: hovered ? "0 32px 64px rgba(10,10,11,0.10)" : "none",
+    cursor: card.slug ? "pointer" : "default",
+    textDecoration: "none",
+    color: "inherit",
+  };
 
+  const inner = (
+    <>
+      <CardImage card={card} hovered={hovered} maxImageHeight={maxImageHeight} />
       <div
         style={{
           padding: "28px 30px 32px",
@@ -237,6 +295,29 @@ function Card({
           {card.outcome}
         </p>
       </div>
+    </>
+  );
+
+  if (card.slug) {
+    return (
+      <Link
+        href={`/work/${card.slug}`}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={articleStyle}
+      >
+        {inner}
+      </Link>
+    );
+  }
+
+  return (
+    <article
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={articleStyle}
+    >
+      {inner}
     </article>
   );
 }
