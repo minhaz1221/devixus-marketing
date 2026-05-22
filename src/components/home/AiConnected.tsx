@@ -114,60 +114,29 @@ function Card({ card }: { card: typeof CARDS[number] }) {
 export default function AiConnected() {
   return (
     <section
-      style={{
-        background: '#0A0A0B',
-        position: 'relative',
-        zIndex: 10,
-        padding: '120px 0',
-        overflow: 'hidden',
-      }}
+      className="relative overflow-hidden isolate"
+      style={{ background: 'var(--ink, #0A0A0B)' }}
     >
-      {/* Video background */}
+      {/* Video texture — screen blend keeps ink dark, highlights come through as motion */}
       <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          opacity: 0.12,
-          zIndex: 0,
-          pointerEvents: 'none',
-        }}
-      >
-        <source
-          src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/rebuld-demo"
-          type="video/mp4"
-        />
-      </video>
+        autoPlay loop muted playsInline
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        style={{ opacity: 0.18, mixBlendMode: 'screen' }}
+        src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/rebuld-demo"
+      />
 
-      {/* Radial glow */}
+      {/* Depth vignette — darkens corners so edges never show adjacent-section bleed */}
       <div
+        className="absolute inset-0 pointer-events-none"
         style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(92,75,255,0.18) 0%, transparent 70%)',
-          pointerEvents: 'none',
-          zIndex: 1,
+          background: 'radial-gradient(ellipse at center, transparent 0%, rgba(10,10,11,0.55) 80%, rgba(10,10,11,0.85) 100%)',
         }}
       />
 
+      {/* All content above video and vignette */}
       <div
-        style={{
-          maxWidth: '1280px',
-          margin: '0 auto',
-          padding: '0 60px',
-          position: 'relative',
-          zIndex: 2,
-        }}
+        className="relative z-10"
+        style={{ maxWidth: '1280px', margin: '0 auto', padding: '120px 60px' }}
       >
         {/* Header */}
         <div style={{ marginBottom: '80px' }}>
@@ -221,8 +190,8 @@ export default function AiConnected() {
           </p>
         </div>
 
-        {/* Grid wrapper — position:relative so SVG overlay aligns */}
-        <div style={{ position: 'relative' }}>
+        {/* Constellation container — aspectRatio drives SVG height; viewBox unchanged */}
+        <div style={{ position: 'relative', aspectRatio: '1020 / 600' }}>
 
           {/* Static L-shaped orthogonal routing SVG */}
           <svg
@@ -300,12 +269,12 @@ export default function AiConnected() {
             ))}
           </div>
 
-          {/* Hub */}
+          {/* Hub — positive margin gives ≥40px clearance from each card row */}
           <div
             style={{
               display: 'flex',
               justifyContent: 'center',
-              margin: '-16px 0',
+              margin: '40px 0',
               position: 'relative',
               zIndex: 2,
             }}
