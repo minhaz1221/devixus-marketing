@@ -3,6 +3,7 @@ import {
   Bricolage_Grotesque,
   Space_Grotesk,
   Instrument_Serif,
+  Geist_Mono,
 } from "next/font/google";
 import "./globals.css";
 
@@ -28,6 +29,13 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Devixus — Engineered to ship.",
   description:
@@ -45,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${spaceGrotesk.variable} ${instrumentSerif.variable}`}
+      className={`${bricolage.variable} ${spaceGrotesk.variable} ${instrumentSerif.variable} ${geistMono.variable}`}
     >
       <body>{children}</body>
     </html>
