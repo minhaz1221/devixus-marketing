@@ -47,8 +47,8 @@ function Card({ card }: { card: typeof CARDS[number] }) {
   return (
     <div
       style={{
-        background: 'rgba(255,255,255,0.05)',
-        border: '1px solid rgba(255,255,255,0.1)',
+        background: 'rgba(20, 20, 22, 0.7)',
+        border: '1px solid rgba(255,255,255,0.12)',
         borderRadius: '18px',
         padding: '28px 32px',
         display: 'flex',
@@ -83,7 +83,7 @@ function Card({ card }: { card: typeof CARDS[number] }) {
       <p
         style={{
           fontSize: '14.5px',
-          color: 'rgba(255,255,255,0.65)',
+          color: 'rgba(255,255,255,0.80)',
           lineHeight: 1.65,
           flex: 1,
         }}
@@ -121,8 +121,14 @@ export default function AiConnected() {
       <video
         autoPlay loop muted playsInline
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        style={{ opacity: 0.45, mixBlendMode: 'screen' }}
+        style={{ opacity: 0.25, mixBlendMode: 'screen' }}
         src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/rebuld-demo"
+      />
+
+      {/* Flat Ink overlay — softens video everywhere before the vignette does edge work */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'rgba(10, 10, 11, 0.35)' }}
       />
 
       {/* Depth vignette — darkens corners so edges never show adjacent-section bleed */}
