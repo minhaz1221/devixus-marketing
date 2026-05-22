@@ -27,6 +27,7 @@ const WORK: WorkCard[] = [
     body: "Automated video interviews, scoring, and shortlisting. Built on Next.js 15 with OpenAI function calling and Supabase RLS.",
     outcome: "82% reduction in manual screening time",
     image: cldUrl("vetted", { width: 900, height: 675 }),
+    slug: "vetted",
   },
   {
     id: "larrys",
@@ -53,6 +54,7 @@ const WORK: WorkCard[] = [
     body: "Technician onboarding, job management, and payment flows. Auth, subscriptions, and RLS from day one.",
     outcome: "Launched in 6 weeks, 200+ active techs",
     image: cldUrl("rebuld", { width: 900, height: 675 }),
+    slug: "rebuld",
   },
   {
     id: "dedalus",
@@ -61,6 +63,7 @@ const WORK: WorkCard[] = [
     body: "Role-based dashboards, document workflows, and Supabase-powered audit trails for a European enterprise client.",
     outcome: "Replaced 3 legacy tools with one interface",
     image: cldUrl("dedalus", { width: 900, height: 675 }),
+    slug: "dedalus",
   },
   {
     id: "yellowai",
@@ -69,6 +72,7 @@ const WORK: WorkCard[] = [
     body: "RAG pipeline, embeddings, and live agent handoff. Integrated with Yellow.ai's platform and internal CRM.",
     outcome: "65% containment rate, zero escalation lag",
     image: cldUrl("yellow-ai", { width: 900, height: 675 }),
+    slug: "yellow-ai",
   },
   {
     id: "rise",
