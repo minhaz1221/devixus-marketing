@@ -76,10 +76,10 @@ function ServiceCard({ service }: { service: Service }) {
   return (
     <article
       style={{
-        background: "#fff",
+        background: "#F5F4F0",
         borderRadius: "16px",
         padding: "40px",
-        border: "1px solid rgba(255,255,255,0.08)",
+        border: "1px solid rgba(0,0,0,0.07)",
         transition: "transform 0.25s ease, box-shadow 0.25s ease",
       }}
       onMouseEnter={(e) => {
@@ -109,9 +109,9 @@ function ServiceCard({ service }: { service: Service }) {
         style={{
           fontSize: "11px",
           fontWeight: 600,
-          letterSpacing: "0.1em",
+          letterSpacing: "0.12em",
           textTransform: "uppercase",
-          color: "var(--pulse)",
+          color: "#5C4BFF",
           marginBottom: "8px",
         }}
       >
@@ -123,7 +123,7 @@ function ServiceCard({ service }: { service: Service }) {
           fontWeight: 700,
           fontSize: "20px",
           lineHeight: 1.25,
-          color: "var(--ink)",
+          color: "#0A0A0B",
           marginBottom: "12px",
         }}
       >
@@ -133,7 +133,7 @@ function ServiceCard({ service }: { service: Service }) {
         style={{
           fontSize: "14px",
           lineHeight: 1.65,
-          color: "var(--g5)",
+          color: "#52525B",
         }}
       >
         {service.body}
@@ -148,14 +148,12 @@ export default function AiSection() {
   return (
     <section
       id="services"
-      className="section-pad"
-      style={{ background: "var(--ink)" }}
+      style={{ background: '#ffffff', padding: '120px 0' }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
         <SectionHeader
           eyebrow="What we build"
-          title="Built with AI, delivered by humans."
-          dark
+          title="AI-powered work."
         />
 
         {/* Service cards grid */}
@@ -172,74 +170,82 @@ export default function AiSection() {
           ))}
         </div>
 
-        {/* Tech stack label */}
-        <p
+        {/* Tech stack strip */}
+        <div
           style={{
-            textAlign: "center",
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.3)",
-            marginBottom: "20px",
+            background: '#ffffff',
+            borderTop: '1px solid #E4E4E7',
+            paddingTop: '40px',
           }}
         >
-          Our tech stack
-        </p>
-
-        {/* Tech stack marquee */}
-        <div style={{ position: "relative", overflow: "hidden" }}>
-          <div
-            aria-hidden="true"
+          <p
             style={{
-              position: "absolute",
-              left: 0,
-              top: 0,
-              bottom: 0,
-              width: "100px",
-              zIndex: 1,
-              background: "linear-gradient(to right, var(--ink), transparent)",
-              pointerEvents: "none",
+              textAlign: "center",
+              fontSize: "11px",
+              fontWeight: 600,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "#A1A1AA",
+              marginBottom: "20px",
             }}
-          />
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              right: 0,
-              top: 0,
-              bottom: 0,
-              width: "100px",
-              zIndex: 1,
-              background: "linear-gradient(to left, var(--ink), transparent)",
-              pointerEvents: "none",
-            }}
-          />
-
-          <div
-            className="marquee-28"
-            style={{ display: "flex", width: "max-content", alignItems: "center", gap: "10px" }}
           >
-            {doubled.map((tech, i) => (
-              <span
-                key={`${tech.name}-${i}`}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  padding: "6px 14px",
-                  borderRadius: "999px",
-                  border: `1px solid ${tech.border}`,
-                  background: tech.bg,
-                  color: tech.text,
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  whiteSpace: "nowrap",
-                  fontFamily: "var(--font-space)",
-                }}
-              >
-                {tech.name}
-              </span>
-            ))}
+            Our tech stack
+          </p>
+
+          {/* Tech stack marquee */}
+          <div style={{ position: "relative", overflow: "hidden" }}>
+            <div
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                bottom: 0,
+                width: "100px",
+                zIndex: 1,
+                background: "linear-gradient(to right, #ffffff, transparent)",
+                pointerEvents: "none",
+              }}
+            />
+            <div
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                right: 0,
+                top: 0,
+                bottom: 0,
+                width: "100px",
+                zIndex: 1,
+                background: "linear-gradient(to left, #ffffff, transparent)",
+                pointerEvents: "none",
+              }}
+            />
+
+            <div
+              className="marquee-28"
+              style={{ display: "flex", width: "max-content", alignItems: "center", gap: "10px" }}
+            >
+              {doubled.map((tech, i) => (
+                <span
+                  key={`${tech.name}-${i}`}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    padding: "6px 14px",
+                    borderRadius: "999px",
+                    border: `1px solid ${tech.border}`,
+                    background: tech.bg,
+                    color: "#0A0A0B",
+                    fontSize: "13px",
+                    fontWeight: 600,
+                    whiteSpace: "nowrap",
+                    fontFamily: "var(--font-space)",
+                  }}
+                >
+                  {tech.name}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
