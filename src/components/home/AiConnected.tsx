@@ -1,380 +1,419 @@
-interface AiCard {
-  titleMain: string;
-  titleAccent: string;
-  body: string;
-  chips: string[];
-  bg: string;
-  border: string;
-}
+'use client'
 
-const CARDS: AiCard[] = [
+import { useEffect, useRef, useState } from 'react'
+
+const CARDS = [
   {
-    titleMain: "Next.js",
-    titleAccent: "That Ships",
-    body: "Auth, billing, RLS, edge functions. Production-hardened stack from day one.",
-    chips: ["Next.js 16", "Supabase", "Vercel"],
-    bg: "rgba(255,255,255,0.06)",
-    border: "rgba(255,255,255,0.12)",
+    title: 'Next.js',
+    italic: 'That Ships',
+    body: 'Auth, billing, RLS, edge functions. Production-hardened stack from day one.',
+    chips: ['Next.js 16', 'Supabase', 'Vercel'],
+    col: 0, row: 0,
   },
   {
-    titleMain: "WordPress",
-    titleAccent: "Done Right",
-    body: "Custom plugins, not templates. WooCommerce subscription flows other devs gave up on.",
-    chips: ["WooCommerce", "Elementor"],
-    bg: "rgba(255,255,255,0.06)",
-    border: "rgba(255,255,255,0.12)",
+    title: 'WordPress',
+    italic: 'Done Right',
+    body: 'Custom plugins, not templates. WooCommerce subscription flows other devs gave up on.',
+    chips: ['WooCommerce', 'Elementor'],
+    col: 1, row: 0,
   },
   {
-    titleMain: "AI",
-    titleAccent: "In Production",
-    body: "RAG pipelines, embeddings, agent automations. Real systems, not demos.",
-    chips: ["Anthropic", "OpenAI", "pgvector"],
-    bg: "rgba(255,255,255,0.06)",
-    border: "rgba(255,255,255,0.12)",
+    title: 'AI',
+    italic: 'In Production',
+    body: 'RAG pipelines, embeddings, agent automations. Real systems, not demos.',
+    chips: ['Anthropic', 'OpenAI', 'pgvector'],
+    col: 2, row: 0,
   },
   {
-    titleMain: "Voice Agents",
-    titleAccent: "That Work",
-    body: "Inbound, outbound, scheduling. Real telephony with measurable lift in handled calls.",
-    chips: ["Vapi", "ElevenLabs", "Twilio"],
-    bg: "rgba(255,255,255,0.06)",
-    border: "rgba(255,255,255,0.12)",
+    title: 'Voice Agents',
+    italic: 'That Work',
+    body: 'Inbound, outbound, scheduling. Real telephony with measurable lift in handled calls.',
+    chips: ['Vapi', 'ElevenLabs', 'Twilio'],
+    col: 0, row: 1,
   },
   {
-    titleMain: "Security",
-    titleAccent: "First Always",
-    body: "RLS policies, rate limiting, six-pass security audits before every production launch.",
-    chips: ["Supabase RLS", "Rate Limiting"],
-    bg: "rgba(255,255,255,0.06)",
-    border: "rgba(255,255,255,0.12)",
+    title: 'Security',
+    italic: 'First Always',
+    body: 'RLS policies, rate limiting, six-pass security audits before every production launch.',
+    chips: ['Supabase RLS', 'Rate Limiting'],
+    col: 1, row: 1,
   },
   {
-    titleMain: "SaaS",
-    titleAccent: "Built to Scale",
-    body: "Billing, onboarding, analytics, monitoring. Production-ready in weeks.",
-    chips: ["Lemon Squeezy", "Sentry", "Resend"],
-    bg: "rgba(255,255,255,0.06)",
-    border: "rgba(255,255,255,0.12)",
+    title: 'SaaS',
+    italic: 'Built to Scale',
+    body: 'Billing, onboarding, analytics, monitoring. Production-ready in weeks.',
+    chips: ['Lemon Squeezy', 'Sentry', 'Resend'],
+    col: 2, row: 1,
   },
-];
-
-function Chip({ label }: { label: string }) {
-  return (
-    <span
-      style={{
-        display: "inline-block",
-        padding: "4px 10px",
-        borderRadius: "999px",
-        background: "rgba(255,255,255,0.08)",
-        border: "1px solid rgba(255,255,255,0.12)",
-        fontSize: "11px",
-        color: "rgba(255,255,255,0.6)",
-        fontWeight: 500,
-        whiteSpace: "nowrap",
-      }}
-    >
-      {label}
-    </span>
-  );
-}
-
-function ServiceCard({ card }: { card: AiCard }) {
-  return (
-    <article
-      style={{
-        borderRadius: "20px",
-        padding: "28px 32px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        gap: "14px",
-        background: card.bg,
-        border: `1px solid ${card.border}`,
-        textAlign: "left",
-      }}
-    >
-      <h3
-        style={{
-          fontFamily: "var(--font-bricolage)",
-          fontWeight: 700,
-          fontSize: "19px",
-          color: "#fff",
-          lineHeight: 1.2,
-          textAlign: "left",
-        }}
-      >
-        {card.titleMain}{" "}
-        <em
-          style={{
-            fontFamily: "var(--font-instrument)",
-            fontStyle: "italic",
-            color: "var(--glow)",
-          }}
-        >
-          {card.titleAccent}
-        </em>
-      </h3>
-      <p
-        style={{
-          fontSize: "14px",
-          color: "rgba(255,255,255,0.6)",
-          lineHeight: 1.6,
-          flex: 1,
-          textAlign: "left",
-        }}
-      >
-        {card.body}
-      </p>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "flex-start", gap: "6px" }}>
-        {card.chips.map((chip) => (
-          <Chip key={chip} label={chip} />
-        ))}
-      </div>
-    </article>
-  );
-}
-
-function Hub() {
-  return (
-    <div
-      style={{
-        position: "relative",
-        display: "flex",
-        justifyContent: "center",
-        margin: "-16px 0",
-        zIndex: 2,
-      }}
-    >
-      <div
-        className="hub-pulse"
-        style={{
-          position: "relative",
-          width: "80px",
-          height: "80px",
-          borderRadius: "50%",
-          background: "linear-gradient(135deg, #5C4BFF, #4232E6)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-        }}
-      >
-        <div className="hub-ring" />
-        <div className="hub-ring hub-ring-2" />
-        <svg
-          width="44"
-          height="44"
-          viewBox="0 0 44 44"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ position: "relative", zIndex: 1 }}
-        >
-          <line x1="10" y1="10" x2="34" y2="34" stroke="#C9FF3B" strokeWidth="7" strokeLinecap="round" />
-          <line x1="34" y1="10" x2="10" y2="34" stroke="rgba(255,255,255,0.7)" strokeWidth="3" strokeLinecap="round" />
-        </svg>
-      </div>
-    </div>
-  );
-}
-
-function ConnectingLines() {
-  const lp = {
-    stroke: "rgba(92,75,255,0.5)",
-    strokeWidth: "1.5",
-    strokeDasharray: "5 4",
-  };
-
-  return (
-    <svg
-      aria-hidden="true"
-      style={{
-        position: "absolute",
-        inset: 0,
-        width: "100%",
-        height: "100%",
-        pointerEvents: "none",
-        overflow: "visible",
-        zIndex: 0,
-      }}
-      viewBox="0 0 1100 640"
-      preserveAspectRatio="xMidYMid meet"
-    >
-      {/* Horizontal spine through hub */}
-      <line x1="155" y1="320" x2="945" y2="320" {...lp} />
-
-      {/* Hub up to top-center card bottom */}
-      <line x1="550" y1="320" x2="550" y2="265" {...lp} />
-
-      {/* Hub down to bottom-center card top */}
-      <line x1="550" y1="320" x2="550" y2="375" {...lp} />
-
-      {/* Left dot up to top-left card bottom */}
-      <line x1="155" y1="320" x2="183" y2="265" {...lp} />
-
-      {/* Left dot down to bottom-left card top */}
-      <line x1="155" y1="320" x2="183" y2="375" {...lp} />
-
-      {/* Right dot up to top-right card bottom */}
-      <line x1="945" y1="320" x2="917" y2="265" {...lp} />
-
-      {/* Right dot down to bottom-right card top */}
-      <line x1="945" y1="320" x2="917" y2="375" {...lp} />
-
-      {/* Endpoint dots */}
-      <circle cx="155" cy="320" r="5" fill="#5C4BFF" />
-      <circle cx="945" cy="320" r="5" fill="#5C4BFF" />
-    </svg>
-  );
-}
+]
 
 export default function AiConnected() {
+  const gridRef = useRef<HTMLDivElement>(null)
+  const hubRef = useRef<HTMLDivElement>(null)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [lines, setLines] = useState<
+    { x1: number; y1: number; x2: number; y2: number }[]
+  >([])
+
+  useEffect(() => {
+    function computeLines() {
+      if (!gridRef.current || !hubRef.current) return
+      const grid = gridRef.current.getBoundingClientRect()
+      const hub = hubRef.current.getBoundingClientRect()
+      const hubCx = hub.left + hub.width / 2 - grid.left
+      const hubCy = hub.top + hub.height / 2 - grid.top
+
+      const newLines: { x1: number; y1: number; x2: number; y2: number }[] = []
+      cardRefs.current.forEach((card) => {
+        if (!card) return
+        const r = card.getBoundingClientRect()
+        const cx = r.left + r.width / 2 - grid.left
+        const cy = r.top + r.height / 2 - grid.top
+        newLines.push({ x1: hubCx, y1: hubCy, x2: cx, y2: cy })
+      })
+      setLines(newLines)
+    }
+
+    computeLines()
+    window.addEventListener('resize', computeLines)
+    return () => window.removeEventListener('resize', computeLines)
+  }, [])
+
   return (
     <section
       style={{
-        background: "#0A0A0B",
-        position: "relative",
+        background: '#0A0A0B',
+        position: 'relative',
         zIndex: 10,
-        padding: "120px 0",
-        overflow: "hidden",
+        padding: '120px 0',
+        overflow: 'hidden',
       }}
     >
-      {/* Subtle video background */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          opacity: 0.08,
-          zIndex: 0,
-        }}
-      >
-        <source
-          src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/rebuld-demo"
-          type="video/mp4"
-        />
-      </video>
-
-      {/* Radial gradient overlay */}
+      {/* Radial glow */}
       <div
-        aria-hidden="true"
         style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(10,10,11,0.92)",
-          zIndex: 1,
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '600px',
+          height: '600px',
+          background:
+            'radial-gradient(circle, rgba(92,75,255,0.18) 0%, transparent 70%)',
+          pointerEvents: 'none',
+          zIndex: 0,
         }}
       />
 
-      {/* Content */}
       <div
         style={{
-          position: "relative",
+          maxWidth: '1280px',
+          margin: '0 auto',
+          padding: '0 60px',
+          position: 'relative',
           zIndex: 2,
-          textAlign: "left",
-          padding: "0 24px",
-          maxWidth: "1100px",
-          margin: "0 auto",
         }}
       >
         {/* Header */}
-        <p
-          style={{
-            fontSize: "12px",
-            fontWeight: 600,
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.4)",
-            marginBottom: "24px",
-          }}
-        >
-          — How it works
-        </p>
-
-        <h2
-          style={{
-            fontFamily: "var(--font-bricolage)",
-            fontWeight: 700,
-            fontSize: "clamp(56px, 7vw, 96px)",
-            lineHeight: 0.9,
-            letterSpacing: "-0.04em",
-            color: "#fff",
-            marginBottom: "28px",
-          }}
-        >
-          Built with{" "}
-          <em
+        <div style={{ marginBottom: '80px' }}>
+          <p
             style={{
-              fontFamily: "var(--font-instrument)",
-              fontStyle: "italic",
-              color: "var(--glow)",
+              fontFamily: 'var(--font-mono, monospace)',
+              fontSize: '12px',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.35)',
+              marginBottom: '16px',
             }}
           >
-            AI,
-          </em>
-          <br />
-          delivered by humans.
-        </h2>
+            — How it works
+          </p>
+          <h2
+            style={{
+              fontFamily: "'Bricolage Grotesque', sans-serif",
+              fontWeight: 700,
+              fontSize: 'clamp(44px, 6vw, 80px)',
+              letterSpacing: '-0.04em',
+              lineHeight: 0.92,
+              color: '#fff',
+              marginBottom: '18px',
+            }}
+          >
+            Built with{' '}
+            <em
+              style={{
+                fontFamily: "'Instrument Serif', serif",
+                fontStyle: 'italic',
+                fontWeight: 400,
+                color: '#C9FF3B',
+              }}
+            >
+              AI,
+            </em>
+            <br />
+            delivered by humans.
+          </h2>
+          <p
+            style={{
+              fontSize: '19px',
+              color: 'rgba(255,255,255,0.5)',
+              maxWidth: '560px',
+              lineHeight: 1.65,
+            }}
+          >
+            Every service combines the right tooling with real engineering
+            judgement. Here is the stack that runs it.
+          </p>
+        </div>
 
-        <p
-          style={{
-            fontSize: "20px",
-            color: "rgba(255,255,255,0.55)",
-            maxWidth: "560px",
-            lineHeight: 1.55,
-          }}
-        >
-          Real production systems. Not demos, not prototypes — working software
-          handed over running.
-        </p>
+        {/* Grid + SVG lines */}
+        <div ref={gridRef} style={{ position: 'relative' }}>
+          {/* SVG lines drawn from measured positions */}
+          {lines.length > 0 && (
+            <svg
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                pointerEvents: 'none',
+                zIndex: 0,
+                overflow: 'visible',
+              }}
+            >
+              {lines.map((l, i) => (
+                <line
+                  key={i}
+                  x1={l.x1}
+                  y1={l.y1}
+                  x2={l.x2}
+                  y2={l.y2}
+                  stroke="rgba(92,75,255,0.45)"
+                  strokeWidth="1.5"
+                  strokeDasharray="5 4"
+                />
+              ))}
+              {/* Dots at card endpoints */}
+              {lines.map((l, i) => (
+                <circle
+                  key={`dot-${i}`}
+                  cx={l.x2}
+                  cy={l.y2}
+                  r="4"
+                  fill="#5C4BFF"
+                />
+              ))}
+            </svg>
+          )}
 
-        {/* Card grid + hub */}
-        <div
-          style={{
-            margin: "80px 0 0",
-            position: "relative",
-          }}
-        >
-          <ConnectingLines />
-
-          {/* Row 1 */}
+          {/* 3×2 card grid — Row 1 */}
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "20px",
-              position: "relative",
-              zIndex: 2,
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '20px',
+              position: 'relative',
+              zIndex: 1,
             }}
           >
-            {CARDS.slice(0, 3).map((card) => (
-              <ServiceCard key={card.titleMain} card={card} />
+            {CARDS.filter((c) => c.row === 0).map((card, i) => (
+              <div
+                key={card.title}
+                ref={(el) => {
+                  cardRefs.current[i] = el
+                }}
+                style={{
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '18px',
+                  padding: '28px 32px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                  textAlign: 'left',
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'Bricolage Grotesque', sans-serif",
+                    fontWeight: 700,
+                    fontSize: '20px',
+                    color: '#fff',
+                    letterSpacing: '-0.02em',
+                  }}
+                >
+                  {card.title}{' '}
+                  <em
+                    style={{
+                      fontFamily: "'Instrument Serif', serif",
+                      fontStyle: 'italic',
+                      fontWeight: 400,
+                      color: '#C9FF3B',
+                    }}
+                  >
+                    {card.italic}
+                  </em>
+                </div>
+                <p
+                  style={{
+                    fontSize: '14.5px',
+                    color: 'rgba(255,255,255,0.65)',
+                    lineHeight: 1.65,
+                    flex: 1,
+                  }}
+                >
+                  {card.body}
+                </p>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {card.chips.map((chip) => (
+                    <span
+                      key={chip}
+                      style={{
+                        background: 'rgba(255,255,255,0.07)',
+                        border: '1px solid rgba(255,255,255,0.12)',
+                        borderRadius: '999px',
+                        padding: '4px 12px',
+                        fontSize: '12px',
+                        color: 'rgba(255,255,255,0.65)',
+                      }}
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
 
-          <Hub />
+          {/* Hub */}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              margin: '32px 0',
+              position: 'relative',
+              zIndex: 2,
+            }}
+          >
+            <div
+              ref={hubRef}
+              style={{
+                width: '76px',
+                height: '76px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #5C4BFF, #4232E6)',
+                boxShadow:
+                  '0 0 0 12px rgba(92,75,255,0.15), 0 0 0 24px rgba(92,75,255,0.07)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                animation: 'hub-pulse 2.5s ease-in-out infinite',
+              }}
+            >
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+              >
+                {/* Thick Glow stroke — top-left to bottom-right */}
+                <line
+                  x1="9" y1="9" x2="31" y2="31"
+                  stroke="#C9FF3B"
+                  strokeWidth="7"
+                  strokeLinecap="round"
+                />
+                {/* Thin white stroke — top-right to bottom-left */}
+                <line
+                  x1="31" y1="9" x2="9" y2="31"
+                  stroke="rgba(255,255,255,0.75)"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+          </div>
 
           {/* Row 2 */}
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "20px",
-              position: "relative",
-              zIndex: 2,
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '20px',
+              position: 'relative',
+              zIndex: 1,
             }}
           >
-            {CARDS.slice(3).map((card) => (
-              <ServiceCard key={card.titleMain} card={card} />
+            {CARDS.filter((c) => c.row === 1).map((card, i) => (
+              <div
+                key={card.title}
+                ref={(el) => {
+                  cardRefs.current[i + 3] = el
+                }}
+                style={{
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: '18px',
+                  padding: '28px 32px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                  textAlign: 'left',
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'Bricolage Grotesque', sans-serif",
+                    fontWeight: 700,
+                    fontSize: '20px',
+                    color: '#fff',
+                    letterSpacing: '-0.02em',
+                  }}
+                >
+                  {card.title}{' '}
+                  <em
+                    style={{
+                      fontFamily: "'Instrument Serif', serif",
+                      fontStyle: 'italic',
+                      fontWeight: 400,
+                      color: '#C9FF3B',
+                    }}
+                  >
+                    {card.italic}
+                  </em>
+                </div>
+                <p
+                  style={{
+                    fontSize: '14.5px',
+                    color: 'rgba(255,255,255,0.65)',
+                    lineHeight: 1.65,
+                    flex: 1,
+                  }}
+                >
+                  {card.body}
+                </p>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {card.chips.map((chip) => (
+                    <span
+                      key={chip}
+                      style={{
+                        background: 'rgba(255,255,255,0.07)',
+                        border: '1px solid rgba(255,255,255,0.12)',
+                        borderRadius: '999px',
+                        padding: '4px 12px',
+                        fontSize: '12px',
+                        color: 'rgba(255,255,255,0.65)',
+                      }}
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }
