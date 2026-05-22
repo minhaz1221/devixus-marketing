@@ -13,48 +13,48 @@ const CARDS: AiCard[] = [
     titleAccent: "That Ships",
     body: "Auth, billing, RLS, edge functions. Production-hardened stack from day one.",
     chips: ["Next.js 16", "Supabase", "Vercel"],
-    bg: "rgba(92,75,255,0.12)",
-    border: "rgba(92,75,255,0.25)",
+    bg: "rgba(255,255,255,0.06)",
+    border: "rgba(255,255,255,0.12)",
   },
   {
     titleMain: "WordPress",
     titleAccent: "Done Right",
     body: "Custom plugins, not templates. WooCommerce subscription flows other devs gave up on.",
     chips: ["WooCommerce", "Elementor"],
-    bg: "rgba(201,255,59,0.07)",
-    border: "rgba(201,255,59,0.2)",
+    bg: "rgba(255,255,255,0.06)",
+    border: "rgba(255,255,255,0.12)",
   },
   {
     titleMain: "AI",
     titleAccent: "In Production",
     body: "RAG pipelines, embeddings, agent automations. Real systems, not demos.",
     chips: ["Anthropic", "OpenAI", "pgvector"],
-    bg: "rgba(92,75,255,0.12)",
-    border: "rgba(92,75,255,0.25)",
+    bg: "rgba(255,255,255,0.06)",
+    border: "rgba(255,255,255,0.12)",
   },
   {
     titleMain: "Voice Agents",
     titleAccent: "That Work",
     body: "Inbound, outbound, scheduling. Real telephony with measurable lift in handled calls.",
     chips: ["Vapi", "ElevenLabs", "Twilio"],
-    bg: "rgba(92,75,255,0.12)",
-    border: "rgba(92,75,255,0.25)",
+    bg: "rgba(255,255,255,0.06)",
+    border: "rgba(255,255,255,0.12)",
   },
   {
     titleMain: "Security",
     titleAccent: "First Always",
     body: "RLS policies, rate limiting, six-pass security audits before every production launch.",
     chips: ["Supabase RLS", "Rate Limiting"],
-    bg: "rgba(201,255,59,0.07)",
-    border: "rgba(201,255,59,0.2)",
+    bg: "rgba(255,255,255,0.06)",
+    border: "rgba(255,255,255,0.12)",
   },
   {
     titleMain: "SaaS",
     titleAccent: "Built to Scale",
     body: "Billing, onboarding, analytics, monitoring. Production-ready in weeks.",
     chips: ["Lemon Squeezy", "Sentry", "Resend"],
-    bg: "rgba(92,75,255,0.12)",
-    border: "rgba(92,75,255,0.25)",
+    bg: "rgba(255,255,255,0.06)",
+    border: "rgba(255,255,255,0.12)",
   },
 ];
 
@@ -157,18 +157,15 @@ function Hub() {
       >
         <div className="hub-ring" />
         <div className="hub-ring hub-ring-2" />
-        {/* Makers Cross — thick glow stroke + thin white overlay */}
         <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
+          width="36"
+          height="36"
+          viewBox="0 0 36 36"
           fill="none"
           style={{ position: "relative", zIndex: 1 }}
         >
-          <line x1="16" y1="5" x2="16" y2="27" stroke="#C9FF3B" strokeWidth="4" strokeLinecap="round" />
-          <line x1="5" y1="16" x2="27" y2="16" stroke="#C9FF3B" strokeWidth="4" strokeLinecap="round" />
-          <line x1="16" y1="5" x2="16" y2="27" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeLinecap="round" />
-          <line x1="5" y1="16" x2="27" y2="16" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="8" y1="8" x2="28" y2="28" stroke="#C9FF3B" strokeWidth="4.5" strokeLinecap="round" />
+          <line x1="28" y1="8" x2="8" y2="28" stroke="rgba(255,255,255,0.8)" strokeWidth="2.2" strokeLinecap="round" />
         </svg>
       </div>
     </div>
@@ -212,9 +209,9 @@ function ConnectingLines() {
           y1={pt.y}
           x2={hub.x}
           y2={hub.y}
-          stroke="rgba(92,75,255,0.35)"
+          stroke="rgba(92,75,255,0.4)"
           strokeWidth="1.5"
-          strokeDasharray="4 3"
+          strokeDasharray="5 4"
         />
       ))}
     </svg>

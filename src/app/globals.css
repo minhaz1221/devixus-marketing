@@ -63,12 +63,19 @@ body {
   to   { transform: translateX(-50%); }
 }
 
+@keyframes marquee-third {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
 .marquee-22       { animation: marquee 22s linear infinite; }
 .marquee-22-rev   { animation: marquee 22s linear infinite reverse; }
 .marquee-30 { animation: marquee 30s linear infinite; }
 .marquee-28 { animation: marquee 28s linear infinite; }
 .marquee-40 { animation: marquee 40s linear infinite; }
 .marquee-48 { animation: marquee 48s linear infinite reverse; }
+.marquee-40-third     { animation: marquee-third 40s linear infinite; }
+.marquee-48-third-rev { animation: marquee-third 48s linear infinite reverse; }
 
 .marquee-22:hover,
 .marquee-22-rev:hover,
@@ -134,7 +141,9 @@ body {
   .marquee-30,
   .marquee-28,
   .marquee-40,
-  .marquee-48 { animation: none; }
+  .marquee-48,
+  .marquee-40-third,
+  .marquee-48-third-rev { animation: none; }
   .spinning-border { animation: none; background: var(--glow); }
   .blink { animation: none; }
   .hub-pulse { animation: none; }

@@ -32,6 +32,11 @@ export const metadata: Metadata = {
   title: "Devixus — Engineered to ship.",
   description:
     "A software studio that builds production-grade web, SaaS, and AI products.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

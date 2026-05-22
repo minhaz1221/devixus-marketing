@@ -4,8 +4,6 @@ import type { Review } from "@/lib/constants";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 function ReviewCard({ review }: { review: Review }) {
-  const boldifyQuote = (text: string) => text;
-
   return (
     <article
       style={{
@@ -13,7 +11,7 @@ function ReviewCard({ review }: { review: Review }) {
         border: "1px solid rgba(0,0,0,0.07)",
         borderRadius: "20px",
         padding: "36px",
-        minHeight: "260px",
+        minHeight: "280px",
         width: "420px",
         flexShrink: 0,
         display: "flex",
@@ -31,19 +29,17 @@ function ReviewCard({ review }: { review: Review }) {
           flex: 1,
         }}
       >
-        {boldifyQuote(review.quote)}
+        {review.quote}
       </p>
       <div>
         <div style={{ height: "1px", background: "rgba(0,0,0,0.07)", marginBottom: "16px" }} />
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          {/* Gradient ring avatar */}
           <div
             style={{
               width: "44px",
               height: "44px",
               borderRadius: "50%",
               padding: "2px",
-              background: `linear-gradient(135deg, var(--${review.ring.split(" ").join(", var(--")}))`,
               flexShrink: 0,
             }}
             className={`bg-gradient-to-br ${review.ring}`}
@@ -73,8 +69,12 @@ function ReviewCard({ review }: { review: Review }) {
 }
 
 export default function Reviews() {
-  const row1 = [...REVIEWS.slice(0, 3), ...REVIEWS.slice(0, 3)];
-  const row2 = [...REVIEWS.slice(3), ...REVIEWS.slice(3)];
+  const first3 = REVIEWS.slice(0, 3);
+  const last3 = REVIEWS.slice(3);
+
+  // 3× duplication so -33.333% animation always has content filling the viewport
+  const row1 = [...first3, ...first3, ...first3];
+  const row2 = [...last3, ...last3, ...last3];
 
   return (
     <section className="section-pad" style={{ background: "#F7F7F7", overflow: "hidden" }}>
@@ -83,13 +83,13 @@ export default function Reviews() {
       </div>
 
       {/* Row 1 — forward */}
-      <div style={{ overflow: "hidden", marginBottom: "20px" }}>
+      <div style={{ overflow: "hidden", marginTop: "56px", marginBottom: "20px" }}>
         <div
-          className="marquee-40"
+          className="marquee-40-third"
           style={{ display: "flex", width: "max-content", gap: "20px", padding: "4px 0" }}
         >
           {row1.map((review, i) => (
-            <ReviewCard key={`r1-${review.name}-${i}`} review={review} />
+            <ReviewCard key={`r1-${i}`} review={review} />
           ))}
         </div>
       </div>
@@ -97,11 +97,11 @@ export default function Reviews() {
       {/* Row 2 — reverse */}
       <div style={{ overflow: "hidden" }}>
         <div
-          className="marquee-48"
+          className="marquee-48-third-rev"
           style={{ display: "flex", width: "max-content", gap: "20px", padding: "4px 0" }}
         >
           {row2.map((review, i) => (
-            <ReviewCard key={`r2-${review.name}-${i}`} review={review} />
+            <ReviewCard key={`r2-${i}`} review={review} />
           ))}
         </div>
       </div>

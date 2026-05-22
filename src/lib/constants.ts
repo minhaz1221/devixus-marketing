@@ -86,15 +86,15 @@ export const REVIEWS: Review[] = [
     role: 'Marketing Lead @ BASF / Nunhems Mexico',
     ring: 'from-indigo-400 to-indigo-600',
     quote:
-      '"Built our World Cup prediction platform in nine weeks. The security audit caught things our internal team missed. Delivered on time, zero incidents."',
+      '"Devixus built our World Cup prediction platform from brief to production in nine weeks. The security audit caught things our internal team missed. Delivered on time, zero incidents."',
   },
   {
     photo: 'https://randomuser.me/api/portraits/women/44.jpg',
     name: 'Ruth',
-    role: "Founder @ Larry's Lunch, Australia",
+    role: "Founder @ Larrys Lunch, Australia",
     ring: 'from-amber-400 to-amber-600',
     quote:
-      '"The plugin does things WooCommerce simply doesn\'t support. Iterated 15+ versions until it was exactly right. Still running perfectly today."',
+      '"Devixus built a plugin that does things WooCommerce simply does not support. They iterated across 15+ versions until the cart experience was exactly right. Still running perfectly."',
   },
   {
     photo: 'https://randomuser.me/api/portraits/men/76.jpg',
@@ -102,14 +102,15 @@ export const REVIEWS: Review[] = [
     role: 'Co-founder @ Rise Headwear, USA',
     ring: 'from-violet-400 to-violet-600',
     quote:
-      '"The NFC system and portal work seamlessly. Understood the product, not just the brief. Multiple projects — always clean, always on time."',
+      '"The Devixus team understood the product, not just the brief. The NFC system and portal work seamlessly together. Multiple projects delivered — always clean, always on time."',
   },
   {
     photo: 'https://randomuser.me/api/portraits/men/60.jpg',
     name: 'Salar Shirazi',
     role: 'Founder @ Jake Electric, UK',
     ring: 'from-green-400 to-green-600',
-    quote: '"The mega menu took three other devs weeks. Done in two days, exactly right."',
+    quote:
+      '"A mega menu that took three other devs weeks — Devixus had it done in two days and it was exactly right. That level of execution is rare."',
   },
   {
     photo: 'https://randomuser.me/api/portraits/men/22.jpg',
@@ -117,7 +118,7 @@ export const REVIEWS: Review[] = [
     role: 'Founder @ Ironglass, Italy',
     ring: 'from-orange-400 to-orange-600',
     quote:
-      '"Diagnosed the PayPal PPCP and Apple Pay issue in two hours. Fixed in four days. Completely stress-free."',
+      '"Devixus diagnosed our broken checkout — PayPal PPCP failure, Apple Pay domain issue — in two hours and fixed everything in four days. Completely stress-free."',
   },
   {
     photo: 'https://randomuser.me/api/portraits/men/91.jpg',
@@ -125,7 +126,7 @@ export const REVIEWS: Review[] = [
     role: 'Founder @ Leo Movement, Germany',
     ring: 'from-pink-400 to-pink-600',
     quote:
-      '"He pushed back on one layout choice and he was right. That honest pushback is rare — and it made the product better."',
+      '"Devixus pushed back on one layout choice we suggested — and they were right. That kind of honest pushback is rare and it made the final product better."',
   },
 ]
 
