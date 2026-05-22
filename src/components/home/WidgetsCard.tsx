@@ -95,6 +95,7 @@ export default function WidgetsCard() {
             <div style={{ display: "flex", alignItems: "center", gap: "14px", flexWrap: "wrap" }}>
               <Link
                 href="https://widgets.devixus.com"
+                target="_blank"
                 style={{
                   background: "var(--glow)",
                   color: "var(--ink)",
