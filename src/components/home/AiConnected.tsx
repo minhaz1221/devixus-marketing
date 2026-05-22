@@ -89,6 +89,29 @@ export default function AiConnected() {
         overflow: 'hidden',
       }}
     >
+      {/* Video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: 0.12,
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
+      >
+        <source
+          src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/rebuld-demo"
+          type="video/mp4"
+        />
+      </video>
+
       {/* Radial glow */}
       <div
         style={{
@@ -101,7 +124,7 @@ export default function AiConnected() {
           background:
             'radial-gradient(circle, rgba(92,75,255,0.18) 0%, transparent 70%)',
           pointerEvents: 'none',
-          zIndex: 0,
+          zIndex: 1,
         }}
       />
 
@@ -327,7 +350,7 @@ export default function AiConnected() {
                 <line
                   x1="31" y1="9" x2="9" y2="31"
                   stroke="rgba(255,255,255,0.75)"
-                  strokeWidth="3"
+                  strokeWidth="2.5"
                   strokeLinecap="round"
                 />
               </svg>
