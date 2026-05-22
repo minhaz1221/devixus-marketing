@@ -121,7 +121,7 @@ export default function AiConnected() {
       <video
         autoPlay loop muted playsInline
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        style={{ opacity: 0.18, mixBlendMode: 'screen' }}
+        style={{ opacity: 0.45, mixBlendMode: 'screen' }}
         src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/rebuld-demo"
       />
 
