@@ -4,6 +4,7 @@ export type CaseStudy = {
   title: string
   tagline: string
   tags: string[]
+  stack: string[]
   year: string
   heroImage: string
   problem: string
@@ -22,6 +23,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Nunhems Quiniela',
     tagline: 'A World Cup prediction platform for 800+ agricultural distributors across Latin America.',
     tags: ['Next.js 16', 'Supabase', 'next-intl', 'Security Audit'],
+    stack: ['Next.js 16', 'Supabase', 'next-intl v4', 'Vercel', 'PostgreSQL', 'RLS', 'TypeScript'],
     year: '2025',
     heroImage: 'nunhems',
     problem: 'BASF Nunhems needed a branded World Cup prediction game for 800+ distributors across Latin America — in Spanish, with real-time scoring, secure authentication, and zero tolerance for downtime during live matches. No off-the-shelf product existed. Timeline: 9 weeks from brief to production.',
@@ -53,6 +55,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Larry's Lunch — WooCommerce subscription engine",
     tagline: 'A custom WooCommerce plugin built across 15+ iterations to handle a subscription flow that the platform simply did not support.',
     tags: ['WooCommerce', 'Elementor', 'Custom Plugin', 'Australia Post'],
+    stack: ['WordPress', 'WooCommerce', 'Elementor', 'PHP', 'jQuery', 'Australia Post API'],
     year: '2024',
     heroImage: 'larrys-lunch',
     problem: "Larry's Lunch sells fresh dog food subscriptions in Australia. WooCommerce's native subscription handling couldn't support their two-step modal checkout, cross-sell injection into a block cart, or Australia Post shipping metadata for subscription renewals. Three other developers had attempted the build and walked away.",
@@ -84,6 +87,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Rise Headwear — NFC smart tag system',
     tagline: 'NFC-powered product tags connected to a Monday.com customer portal and a custom hat configurator.',
     tags: ['NFC', 'Supabase', 'Cloudflare Workers', 'Monday.com', 'Elementor'],
+    stack: ['Supabase', 'Cloudflare Workers', 'Monday.com', 'Pabbly', 'Elementor', 'NFC'],
     year: '2024',
     heroImage: 'rise-headwear',
     problem: 'Rise Headwear needed 50 NFC tags on physical hats to redirect customers to product-specific pages, connect to a Monday.com CRM for quote tracking, and display a configurator popup with conditional business rules based on hat shape, style, and closure type.',
@@ -115,6 +119,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Vetted — Brand in Product and Beyond',
     tagline: 'A cohesive brand system built across app UI, physical merchandise, and daily feature interactions.',
     tags: ['Branding', 'Product Design', 'Mobile App', 'Design System'],
+    stack: ['React Native', 'Design System', 'Figma', 'Motion Design'],
     year: '2024',
     heroImage: 'vetted',
     problem: 'Vetted needed a brand identity that worked across every touchpoint — from the app interface to physical merchandise. The challenge was building a visual system flexible enough to span digital product features like Daily Walks, physical expressions like stickers and caps, and the core app UI, while keeping everything instantly recognisable as Vetted.',
@@ -140,6 +145,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Rebuld — Field Service Management SaaS',
     tagline: 'Dashboard design and build for an all-in-one job management platform built specifically for field service businesses.',
     tags: ['SaaS', 'Next.js', 'Supabase', 'Dashboard', 'Field Service'],
+    stack: ['Next.js', 'Supabase', 'OpenAI', 'Google Maps API', 'Stripe', 'TypeScript'],
     year: '2024',
     heroImage: 'rebuld',
     problem: 'Field service businesses — HVAC, plumbing, electrical — were managing jobs across spreadsheets, WhatsApp, and paper invoices. Rebuld needed a unified platform: scheduling, invoicing, CRM, live job tracking, and workforce management in a single surface. The dashboard had to serve both office managers dispatching jobs and field technicians checking assignments on mobile.',
@@ -165,6 +171,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Dedalus — Smart Intelligent Routing for AI Agents',
     tagline: 'Identity and website for an AI agent orchestration platform handling 120K+ model handoffs per day.',
     tags: ['Web Design', 'AI Platform', 'Next.js', 'Brand Identity'],
+    stack: ['Next.js', 'Framer', 'AI Routing', 'Brand Design'],
     year: '2025',
     heroImage: 'dedalus',
     problem: 'Dedalus orchestrates AI agent routing — deciding in real time which model handles which task across a pipeline. The challenge: explain a genuinely complex technical product to enterprise buyers without dumbing it down or burying the capability in jargon. The site needed to communicate scale (120K+ daily handoffs), reliability (5.0 satisfaction), and ease of setup ("launch AI agents in minutes").',
@@ -190,6 +197,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Yellow.ai — Website Design and Build',
     tagline: 'Full discovery, design, and development of the Yellow.ai marketing website — from wireframes to a live product-led site.',
     tags: ['Website', 'Brand', 'Product Visuals', 'Next.js', 'Design System'],
+    stack: ['Next.js', 'Figma', 'Design System', 'Product Visuals', 'Webflow'],
     year: '2024',
     heroImage: 'yellow-ai',
     problem: 'Yellow.ai had a refreshed brand and a platform that had grown significantly in capability — but a website that no longer reflected either. The site needed to communicate an omni-channel, multi-lingual conversational AI platform to enterprise buyers, with enough product depth to support a solutions-focused sales motion.',

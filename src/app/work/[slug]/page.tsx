@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { getCaseStudy, getAllSlugs } from '@/lib/case-studies'
 import { cldUrl } from '@/lib/cloudinary'
 import NextProjectLink from './NextProjectLink'
@@ -20,6 +21,23 @@ export async function generateMetadata({
   return { title: `${cs.client} — ${cs.tagline} | Devixus` }
 }
 
+function SectionLabel({ n, text }: { n: string; text: string }) {
+  return (
+    <p
+      style={{
+        fontFamily: 'var(--font-mono, monospace)',
+        fontSize: '11px',
+        letterSpacing: '0.2em',
+        textTransform: 'uppercase',
+        color: 'var(--pulse)',
+        marginBottom: '16px',
+      }}
+    >
+      {n} — {text}
+    </p>
+  )
+}
+
 export default async function CaseStudyPage({
   params,
 }: {
@@ -29,130 +47,136 @@ export default async function CaseStudyPage({
   const cs = getCaseStudy(slug)
   if (!cs) notFound()
 
-  const heroSrc = cldUrl(cs.heroImage, { width: 1800, height: 900, crop: 'fill' })
+  const next = getCaseStudy(cs.nextSlug)
+  const heroSrc = cldUrl(cs.heroImage, { width: 900, height: 700, crop: 'fill' })
+  const nextPreviewSrc = next
+    ? cldUrl(next.heroImage, { width: 400, height: 280, crop: 'fill' })
+    : ''
 
   return (
-    <main>
+    <main style={{ background: '#fff' }}>
+
       {/* ── HERO ── */}
-      <section
-        style={{
-          background: 'var(--ink)',
-          paddingTop: '80px',
-          paddingBottom: '0',
-        }}
-      >
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
-          {/* Breadcrumb */}
-          <p
-            style={{
-              fontFamily: 'var(--font-space)',
-              fontSize: '12px',
-              letterSpacing: '0.08em',
-              color: 'rgba(255,255,255,0.4)',
-              marginBottom: '28px',
-              textTransform: 'uppercase',
-            }}
-          >
-            Work / {cs.client}
-          </p>
-
-          {/* H1 */}
-          <h1
-            style={{
-              fontFamily: 'var(--font-bricolage)',
-              fontWeight: 700,
-              fontSize: 'clamp(44px, 5vw, 72px)',
-              lineHeight: 0.95,
-              letterSpacing: '-0.03em',
-              color: '#fff',
-              maxWidth: '900px',
-            }}
-          >
-            {cs.title}
-          </h1>
-
-          {/* Tagline */}
-          <p
-            style={{
-              fontSize: '20px',
-              lineHeight: 1.5,
-              color: 'rgba(255,255,255,0.65)',
-              maxWidth: '700px',
-              marginTop: '16px',
-            }}
-          >
-            {cs.tagline}
-          </p>
-
-          {/* Tags */}
+      <section style={{ background: 'var(--ink)', paddingTop: '100px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 60px' }}>
           <div
             style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '8px',
-              marginTop: '24px',
+              display: 'grid',
+              gridTemplateColumns: '55fr 45fr',
+              gap: '60px',
+              alignItems: 'stretch',
             }}
           >
-            {cs.tags.map(tag => (
-              <span
-                key={tag}
+            {/* Left: copy */}
+            <div
+              style={{
+                paddingBottom: '60px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-end',
+              }}
+            >
+              <p
                 style={{
-                  display: 'inline-block',
-                  padding: '5px 14px',
-                  borderRadius: '999px',
-                  background: 'rgba(92,75,255,0.18)',
-                  border: '1px solid rgba(92,75,255,0.35)',
-                  color: '#a89fff',
+                  fontFamily: 'var(--font-mono, monospace)',
                   fontSize: '12px',
-                  fontFamily: 'var(--font-space)',
-                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  color: 'rgba(255,255,255,0.4)',
+                  marginBottom: '32px',
+                }}
+              >
+                Work → {cs.client}
+              </p>
+
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '8px',
+                  marginBottom: '24px',
+                }}
+              >
+                {cs.tags.map(tag => (
+                  <span
+                    key={tag}
+                    style={{
+                      display: 'inline-block',
+                      padding: '5px 14px',
+                      borderRadius: '999px',
+                      background: 'rgba(92,75,255,0.18)',
+                      border: '1px solid rgba(92,75,255,0.35)',
+                      color: '#a89fff',
+                      fontSize: '12px',
+                      fontFamily: 'var(--font-space)',
+                      fontWeight: 600,
+                      letterSpacing: '0.04em',
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <h1
+                style={{
+                  fontFamily: 'var(--font-bricolage)',
+                  fontWeight: 700,
+                  fontSize: 'clamp(44px, 5.5vw, 72px)',
+                  lineHeight: 0.92,
+                  letterSpacing: '-0.04em',
+                  color: '#fff',
+                }}
+              >
+                {cs.title}
+              </h1>
+
+              <p
+                style={{
+                  fontSize: '20px',
+                  color: 'rgba(255,255,255,0.6)',
+                  marginTop: '16px',
+                  maxWidth: '500px',
+                  lineHeight: 1.65,
+                }}
+              >
+                {cs.tagline}
+              </p>
+
+              <p
+                style={{
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontSize: '13px',
+                  color: 'rgba(255,255,255,0.4)',
+                  marginTop: '24px',
                   letterSpacing: '0.04em',
                 }}
               >
-                {tag}
-              </span>
-            ))}
+                {cs.year}
+                <span style={{ margin: '0 8px', opacity: 0.5 }}>·</span>
+                {cs.client}
+              </p>
+            </div>
+
+            {/* Right: hero image */}
+            <div
+              style={{
+                position: 'relative',
+                borderRadius: '12px 12px 0 0',
+                overflow: 'hidden',
+                boxShadow: '0 -20px 60px rgba(92,75,255,0.15)',
+                minHeight: '400px',
+              }}
+            >
+              <Image
+                src={heroSrc}
+                alt={cs.title}
+                fill
+                priority
+                unoptimized
+                style={{ objectFit: 'cover', objectPosition: 'center top' }}
+              />
+            </div>
           </div>
-
-          {/* Year + client */}
-          <p
-            style={{
-              fontFamily: 'var(--font-space)',
-              fontSize: '13px',
-              color: 'rgba(255,255,255,0.4)',
-              marginTop: '12px',
-              letterSpacing: '0.04em',
-            }}
-          >
-            {cs.year} · {cs.client}
-          </p>
-        </div>
-
-        {/* Hero image */}
-        <div
-          style={{
-            position: 'relative',
-            width: '100%',
-            maxHeight: '560px',
-            overflow: 'hidden',
-            marginTop: '48px',
-          }}
-        >
-          <Image
-            src={heroSrc}
-            alt={cs.title}
-            width={1800}
-            height={900}
-            priority
-            unoptimized
-            style={{
-              width: '100%',
-              height: 'auto',
-              maxHeight: '560px',
-              objectFit: 'cover',
-              display: 'block',
-            }}
-          />
         </div>
       </section>
 
@@ -160,194 +184,399 @@ export default async function CaseStudyPage({
       <section style={{ background: 'var(--pulse)', padding: '48px 0' }}>
         <div
           style={{
-            maxWidth: '1200px',
+            maxWidth: '1280px',
             margin: '0 auto',
-            padding: '0 32px',
+            padding: '0 60px',
             display: 'grid',
-            gridTemplateColumns: `repeat(${cs.metrics.length}, 1fr)`,
+            gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '32px',
           }}
         >
-          {cs.metrics.map(m => (
-            <div key={m.label} style={{ textAlign: 'center' }}>
-              <p
-                style={{
-                  fontFamily: 'var(--font-bricolage)',
-                  fontWeight: 700,
-                  fontSize: 'clamp(32px, 4vw, 52px)',
-                  color: '#fff',
-                  lineHeight: 1,
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                {m.value}
-              </p>
-              <p
-                style={{
-                  fontSize: '14px',
-                  color: 'rgba(255,255,255,0.65)',
-                  marginTop: '6px',
-                  fontFamily: 'var(--font-space)',
-                  letterSpacing: '0.04em',
-                  textTransform: 'uppercase',
-                }}
-              >
-                {m.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── CONTENT ── */}
-      <div
-        style={{
-          maxWidth: '760px',
-          margin: '0 auto',
-          padding: '80px 40px',
-        }}
-      >
-        {/* Problem */}
-        <section style={{ marginBottom: '64px' }}>
-          <h2
-            style={{
-              fontFamily: 'var(--font-bricolage)',
-              fontWeight: 700,
-              fontSize: '28px',
-              letterSpacing: '-0.02em',
-              color: 'var(--ink)',
-              marginBottom: '16px',
-            }}
-          >
-            The Problem
-          </h2>
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.8,
-              color: 'var(--g6)',
-            }}
-          >
-            {cs.problem}
-          </p>
-        </section>
-
-        {/* Approach */}
-        <section style={{ marginBottom: '64px' }}>
-          <h2
-            style={{
-              fontFamily: 'var(--font-bricolage)',
-              fontWeight: 700,
-              fontSize: '28px',
-              letterSpacing: '-0.02em',
-              color: 'var(--ink)',
-              marginBottom: '24px',
-            }}
-          >
-            The Approach
-          </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            {cs.approach.map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  paddingLeft: '20px',
-                  borderLeft: '3px solid var(--pulse)',
-                  display: 'flex',
-                  gap: '14px',
-                }}
-              >
-                <span
+          {cs.metrics.map(m => {
+            const hasPlus = m.value.endsWith('+')
+            const base = hasPlus ? m.value.slice(0, -1) : m.value
+            return (
+              <div key={m.label} style={{ textAlign: 'center' }}>
+                <p
                   style={{
                     fontFamily: 'var(--font-space)',
                     fontWeight: 700,
-                    fontSize: '12px',
-                    color: 'var(--pulse)',
-                    minWidth: '20px',
-                    paddingTop: '4px',
+                    fontSize: '56px',
+                    color: '#fff',
+                    lineHeight: 1,
+                    letterSpacing: '-0.02em',
                   }}
                 >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
+                  {base}
+                  {hasPlus && (
+                    <span style={{ color: 'var(--glow)' }}>+</span>
+                  )}
+                </p>
                 <p
                   style={{
-                    fontSize: '18px',
-                    lineHeight: 1.8,
-                    color: 'var(--g6)',
+                    fontSize: '13px',
+                    color: 'rgba(255,255,255,0.65)',
+                    marginTop: '8px',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    fontFamily: 'var(--font-space)',
                   }}
                 >
-                  {item}
+                  {m.label}
                 </p>
               </div>
-            ))}
+            )
+          })}
+        </div>
+      </section>
+
+      {/* ── CONTENT AREA ── */}
+      <div
+        style={{
+          maxWidth: '1100px',
+          margin: '0 auto',
+          padding: '0 60px',
+        }}
+      >
+        {/* Two-column layout */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '68fr 32fr',
+            gap: '80px',
+            padding: '80px 0',
+            alignItems: 'start',
+          }}
+        >
+          {/* ── LEFT COLUMN ── */}
+          <div>
+            {/* 01 — The Problem */}
+            <section style={{ marginBottom: '64px' }}>
+              <SectionLabel n="01" text="THE PROBLEM" />
+              <h2
+                style={{
+                  fontFamily: 'var(--font-bricolage)',
+                  fontWeight: 700,
+                  fontSize: '32px',
+                  letterSpacing: '-0.02em',
+                  color: 'var(--ink)',
+                  marginBottom: '16px',
+                }}
+              >
+                What needed solving.
+              </h2>
+              <p
+                style={{
+                  fontSize: '18px',
+                  color: 'var(--g6, #52525b)',
+                  lineHeight: 1.8,
+                }}
+              >
+                {cs.problem}
+              </p>
+            </section>
+
+            {/* 02 — The Approach */}
+            <section style={{ marginBottom: '64px' }}>
+              <SectionLabel n="02" text="THE APPROACH" />
+              <h2
+                style={{
+                  fontFamily: 'var(--font-bricolage)',
+                  fontWeight: 700,
+                  fontSize: '32px',
+                  letterSpacing: '-0.02em',
+                  color: 'var(--ink)',
+                  marginBottom: '24px',
+                }}
+              >
+                How we built it.
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {cs.approach.map((step, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      borderLeft: '3px solid var(--pulse)',
+                      borderRadius: '0 12px 12px 0',
+                      padding: '20px 24px',
+                      background: 'var(--mist, #f5f4f0)',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-mono, monospace)',
+                        fontSize: '11px',
+                        color: 'var(--pulse)',
+                        letterSpacing: '0.1em',
+                        marginBottom: '8px',
+                      }}
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: '16px',
+                        color: 'var(--g7, #3f3f46)',
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      {step}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* 03 — The Outcome */}
+            <section style={{ marginBottom: '64px' }}>
+              <SectionLabel n="03" text="THE OUTCOME" />
+              <h2
+                style={{
+                  fontFamily: 'var(--font-bricolage)',
+                  fontWeight: 700,
+                  fontSize: '32px',
+                  letterSpacing: '-0.02em',
+                  color: 'var(--ink)',
+                  marginBottom: '16px',
+                }}
+              >
+                What shipped.
+              </h2>
+              <p
+                style={{
+                  fontSize: '18px',
+                  color: 'var(--g6, #52525b)',
+                  lineHeight: 1.8,
+                }}
+              >
+                {cs.outcome}
+              </p>
+            </section>
+
+            {/* 04 — Tech Stack */}
+            <section style={{ marginBottom: '64px' }}>
+              <SectionLabel n="04" text="TECH STACK" />
+              <h2
+                style={{
+                  fontFamily: 'var(--font-bricolage)',
+                  fontWeight: 700,
+                  fontSize: '32px',
+                  letterSpacing: '-0.02em',
+                  color: 'var(--ink)',
+                  marginBottom: '20px',
+                }}
+              >
+                Built with.
+              </h2>
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '12px',
+                }}
+              >
+                {cs.stack.map(tech => (
+                  <span
+                    key={tech}
+                    style={{
+                      background: '#fff',
+                      border: '2px solid var(--pulse)',
+                      borderRadius: '12px',
+                      padding: '12px 20px',
+                      fontWeight: 600,
+                      fontSize: '16px',
+                      color: 'var(--ink)',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+                    }}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </section>
           </div>
-        </section>
 
-        {/* Outcome */}
-        <section style={{ marginBottom: '64px' }}>
-          <h2
-            style={{
-              fontFamily: 'var(--font-bricolage)',
-              fontWeight: 700,
-              fontSize: '28px',
-              letterSpacing: '-0.02em',
-              color: 'var(--ink)',
-              marginBottom: '16px',
-            }}
-          >
-            The Outcome
-          </h2>
-          <p
-            style={{
-              fontSize: '18px',
-              lineHeight: 1.8,
-              color: 'var(--g6)',
-            }}
-          >
-            {cs.outcome}
-          </p>
-        </section>
+          {/* ── RIGHT COLUMN: sticky sidebar ── */}
+          <div style={{ position: 'sticky', top: '100px' }}>
 
-        {/* Testimonial */}
+            {/* Project Details card */}
+            <div
+              style={{
+                background: 'var(--ink)',
+                borderRadius: '16px',
+                padding: '32px',
+                marginBottom: '16px',
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontSize: '12px',
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: 'var(--glow)',
+                  marginBottom: '24px',
+                }}
+              >
+                Project Details
+              </p>
+              {([
+                { label: 'Client', value: cs.client },
+                { label: 'Year', value: cs.year },
+                { label: 'Services', value: cs.tags.slice(0, 2).join(' · ') },
+                { label: 'Status', value: 'Live in production' },
+              ] as const).map(({ label, value }, i) => (
+                <div
+                  key={label}
+                  style={{
+                    paddingTop: '12px',
+                    paddingBottom: '12px',
+                    borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-mono, monospace)',
+                      fontSize: '12px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: 'rgba(255,255,255,0.4)',
+                      marginBottom: '4px',
+                    }}
+                  >
+                    {label}
+                  </p>
+                  <p style={{ fontSize: '15px', color: '#fff', fontWeight: 500 }}>
+                    {value}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Key Metrics card */}
+            <div
+              style={{
+                background: 'var(--mist, #f5f4f0)',
+                borderRadius: '16px',
+                padding: '32px',
+                marginBottom: '16px',
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontSize: '12px',
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: 'var(--pulse)',
+                  marginBottom: '24px',
+                }}
+              >
+                Key Numbers
+              </p>
+              {cs.metrics.map((m, i) => (
+                <div key={m.label}>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-bricolage)',
+                      fontWeight: 700,
+                      fontSize: '40px',
+                      color: 'var(--ink)',
+                      lineHeight: 1,
+                      letterSpacing: '-0.02em',
+                    }}
+                  >
+                    {m.value}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: '13px',
+                      color: 'var(--g5, #71717a)',
+                      marginTop: '4px',
+                    }}
+                  >
+                    {m.label}
+                  </p>
+                  {i < cs.metrics.length - 1 && (
+                    <div
+                      style={{
+                        height: '1px',
+                        background: 'rgba(0,0,0,0.08)',
+                        margin: '16px 0',
+                      }}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Back to work */}
+            <Link
+              href="/work"
+              style={{
+                display: 'inline-block',
+                marginTop: '32px',
+                color: 'var(--pulse)',
+                fontSize: '14px',
+                fontFamily: 'var(--font-space)',
+                fontWeight: 600,
+                textDecoration: 'underline',
+                letterSpacing: '0.02em',
+              }}
+            >
+              ← All work
+            </Link>
+          </div>
+        </div>
+
+        {/* ── TESTIMONIAL — full width ── */}
         {cs.testimonial && (
           <div
             style={{
-              background: 'var(--mist)',
-              borderRadius: '20px',
+              background: 'linear-gradient(135deg, #f8f7ff, #f0eeff)',
+              borderLeft: '4px solid var(--pulse)',
+              borderRadius: '16px',
               padding: '48px',
-              marginBottom: '0',
+              marginBottom: '80px',
             }}
           >
-            <div
+            <span
               style={{
                 fontSize: '80px',
-                lineHeight: 0,
                 color: 'var(--pulse)',
-                fontFamily: 'Georgia, serif',
-                marginBottom: '24px',
+                lineHeight: 0,
                 display: 'block',
+                marginBottom: '16px',
+                fontFamily: 'Georgia, serif',
               }}
             >
               &ldquo;
-            </div>
+            </span>
             <p
               style={{
                 fontFamily: 'var(--font-instrument)',
                 fontStyle: 'italic',
                 fontSize: '22px',
-                lineHeight: 1.6,
                 color: 'var(--ink)',
-                marginBottom: '32px',
+                lineHeight: 1.65,
               }}
             >
               {cs.testimonial.quote}
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '14px',
+                marginTop: '28px',
+              }}
+            >
               <Image
                 src={cs.testimonial.photo}
                 alt={cs.testimonial.name}
-                width={48}
-                height={48}
+                width={52}
+                height={52}
                 unoptimized
                 style={{ borderRadius: '50%', objectFit: 'cover' }}
               />
@@ -365,7 +594,7 @@ export default async function CaseStudyPage({
                 <p
                   style={{
                     fontSize: '13px',
-                    color: 'var(--g5)',
+                    color: 'var(--g5, #71717a)',
                     marginTop: '2px',
                   }}
                 >
@@ -378,21 +607,13 @@ export default async function CaseStudyPage({
       </div>
 
       {/* ── NEXT PROJECT ── */}
-      <section style={{ background: 'var(--ink)', padding: '64px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
-          <p
-            style={{
-              fontFamily: 'var(--font-space)',
-              fontSize: '12px',
-              letterSpacing: '0.1em',
-              color: 'rgba(255,255,255,0.4)',
-              textTransform: 'uppercase',
-              marginBottom: '16px',
-            }}
-          >
-            Next project →
-          </p>
-          <NextProjectLink slug={cs.nextSlug} title={cs.nextTitle} />
+      <section style={{ background: 'var(--ink)', padding: '80px 0' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 60px' }}>
+          <NextProjectLink
+            slug={cs.nextSlug}
+            title={cs.nextTitle}
+            previewSrc={nextPreviewSrc}
+          />
         </div>
       </section>
     </main>
