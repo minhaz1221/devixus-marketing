@@ -164,7 +164,7 @@ function Hub() {
           fill="none"
           style={{ position: "relative", zIndex: 1 }}
         >
-          <line x1="9" y1="9" x2="31" y2="31" stroke="#C9FF3B" strokeWidth="5.5" strokeLinecap="round" />
+          <line x1="9" y1="9" x2="31" y2="31" stroke="#C9FF3B" strokeWidth="6" strokeLinecap="round" />
           <line x1="31" y1="9" x2="9" y2="31" stroke="rgba(255,255,255,0.75)" strokeWidth="2.5" strokeLinecap="round" />
         </svg>
       </div>
@@ -223,10 +223,11 @@ export default function AiConnected() {
   return (
     <section
       style={{
-        background: "var(--ink)",
+        background: "#0A0A0B",
+        position: "relative",
+        zIndex: 10,
         padding: "120px 0",
         overflow: "hidden",
-        position: "relative",
       }}
     >
       {/* Subtle video background */}
@@ -241,7 +242,7 @@ export default function AiConnected() {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          opacity: 0.15,
+          opacity: 0.08,
           zIndex: 0,
         }}
       >
@@ -257,10 +258,8 @@ export default function AiConnected() {
         style={{
           position: "absolute",
           inset: 0,
-          background:
-            "radial-gradient(ellipse at center, rgba(92,75,255,0.25) 0%, var(--ink) 70%)",
+          background: "rgba(10,10,11,0.92)",
           zIndex: 1,
-          pointerEvents: "none",
         }}
       />
 
