@@ -132,11 +132,11 @@ export default function Stats() {
             <CountUpNumber config={configs[i]} animate={animate} />
             <p
               style={{
-                color: "rgba(255,255,255,0.65)",
-                fontSize: "14px",
+                color: "rgba(255,255,255,0.75)",
+                fontSize: "18px",
                 fontWeight: 500,
-                marginTop: "12px",
-                letterSpacing: "0.04em",
+                marginTop: "14px",
+                letterSpacing: "0.02em",
                 fontFamily: "var(--font-space), system-ui, sans-serif",
               }}
             >
