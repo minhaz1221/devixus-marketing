@@ -83,12 +83,14 @@ function ServiceCard({ card }: { card: AiCard }) {
     <article
       style={{
         borderRadius: "20px",
-        padding: "28px",
+        padding: "28px 32px",
         display: "flex",
         flexDirection: "column",
+        alignItems: "flex-start",
         gap: "14px",
         background: card.bg,
         border: `1px solid ${card.border}`,
+        textAlign: "left",
       }}
     >
       <h3
@@ -98,6 +100,7 @@ function ServiceCard({ card }: { card: AiCard }) {
           fontSize: "19px",
           color: "#fff",
           lineHeight: 1.2,
+          textAlign: "left",
         }}
       >
         {card.titleMain}{" "}
@@ -117,11 +120,12 @@ function ServiceCard({ card }: { card: AiCard }) {
           color: "rgba(255,255,255,0.6)",
           lineHeight: 1.6,
           flex: 1,
+          textAlign: "left",
         }}
       >
         {card.body}
       </p>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "flex-start", gap: "6px" }}>
         {card.chips.map((chip) => (
           <Chip key={chip} label={chip} />
         ))}
@@ -173,9 +177,8 @@ function Hub() {
 }
 
 function ConnectingLines() {
-  const dotProps = { r: 4, fill: "rgba(92,75,255,0.6)" };
-  const lineProps = {
-    stroke: "rgba(92,75,255,0.45)",
+  const lp = {
+    stroke: "rgba(92,75,255,0.5)",
     strokeWidth: "1.5",
     strokeDasharray: "5 4",
   };
@@ -192,29 +195,33 @@ function ConnectingLines() {
         overflow: "visible",
         zIndex: 0,
       }}
-      viewBox="0 0 1100 590"
+      viewBox="0 0 1100 560"
       preserveAspectRatio="xMidYMid meet"
     >
-      {/* top-left → hub */}
-      <line x1="177" y1="130" x2="550" y2="295" {...lineProps} />
-      {/* top-center → hub */}
-      <line x1="550" y1="130" x2="550" y2="260" {...lineProps} />
-      {/* top-right → hub */}
-      <line x1="923" y1="130" x2="550" y2="295" {...lineProps} />
-      {/* bottom-left → hub */}
-      <line x1="177" y1="460" x2="550" y2="330" {...lineProps} />
-      {/* bottom-center → hub */}
-      <line x1="550" y1="460" x2="550" y2="330" {...lineProps} />
-      {/* bottom-right → hub */}
-      <line x1="923" y1="460" x2="550" y2="330" {...lineProps} />
+      {/* Horizontal spine through hub */}
+      <line x1="160" y1="280" x2="940" y2="280" {...lp} />
 
-      {/* endpoint dots */}
-      <circle cx="177" cy="130" {...dotProps} />
-      <circle cx="550" cy="130" {...dotProps} />
-      <circle cx="923" cy="130" {...dotProps} />
-      <circle cx="177" cy="460" {...dotProps} />
-      <circle cx="550" cy="460" {...dotProps} />
-      <circle cx="923" cy="460" {...dotProps} />
+      {/* Vertical: hub up to top-center card */}
+      <line x1="550" y1="260" x2="550" y2="170" {...lp} />
+
+      {/* Vertical: hub down to bottom-center card */}
+      <line x1="550" y1="300" x2="550" y2="380" {...lp} />
+
+      {/* Left dot → top-left card */}
+      <line x1="160" y1="280" x2="183" y2="170" {...lp} />
+
+      {/* Left dot → bottom-left card */}
+      <line x1="160" y1="280" x2="183" y2="380" {...lp} />
+
+      {/* Right dot → top-right card */}
+      <line x1="940" y1="280" x2="917" y2="170" {...lp} />
+
+      {/* Right dot → bottom-right card */}
+      <line x1="940" y1="280" x2="917" y2="380" {...lp} />
+
+      {/* Endpoint dots on spine */}
+      <circle cx="160" cy="280" r="5" fill="#5C4BFF" />
+      <circle cx="940" cy="280" r="5" fill="#5C4BFF" />
     </svg>
   );
 }
@@ -268,8 +275,10 @@ export default function AiConnected() {
         style={{
           position: "relative",
           zIndex: 2,
-          textAlign: "center",
+          textAlign: "left",
           padding: "0 24px",
+          maxWidth: "1100px",
+          margin: "0 auto",
         }}
       >
         {/* Header */}
@@ -316,7 +325,6 @@ export default function AiConnected() {
             fontSize: "20px",
             color: "rgba(255,255,255,0.55)",
             maxWidth: "560px",
-            margin: "0 auto",
             lineHeight: 1.55,
           }}
         >
@@ -327,8 +335,7 @@ export default function AiConnected() {
         {/* Card grid + hub */}
         <div
           style={{
-            maxWidth: "1100px",
-            margin: "80px auto 0",
+            margin: "80px 0 0",
             position: "relative",
           }}
         >
