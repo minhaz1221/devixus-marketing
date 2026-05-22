@@ -158,34 +158,27 @@ function Hub() {
         <div className="hub-ring" />
         <div className="hub-ring hub-ring-2" />
         <svg
-          width="36"
-          height="36"
-          viewBox="0 0 36 36"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
           fill="none"
           style={{ position: "relative", zIndex: 1 }}
         >
-          <line x1="8" y1="8" x2="28" y2="28" stroke="#C9FF3B" strokeWidth="4.5" strokeLinecap="round" />
-          <line x1="28" y1="8" x2="8" y2="28" stroke="rgba(255,255,255,0.8)" strokeWidth="2.2" strokeLinecap="round" />
+          <line x1="9" y1="9" x2="31" y2="31" stroke="#C9FF3B" strokeWidth="5.5" strokeLinecap="round" />
+          <line x1="31" y1="9" x2="9" y2="31" stroke="rgba(255,255,255,0.75)" strokeWidth="2.5" strokeLinecap="round" />
         </svg>
       </div>
     </div>
   );
 }
 
-// Dashed SVG lines from each card center to the hub center.
-// viewBox 1100×450 approximates the rendered grid at desktop widths.
-// Col centers x: 177 / 550 / 923 (3 equal cols in 1100px with 20px gaps).
-// Row centers y: 100 (top row) / 220 (hub) / 340 (bottom row).
 function ConnectingLines() {
-  const hub = { x: 550, y: 220 };
-  const endpoints = [
-    { x: 177, y: 100 },
-    { x: 550, y: 100 },
-    { x: 923, y: 100 },
-    { x: 177, y: 340 },
-    { x: 550, y: 340 },
-    { x: 923, y: 340 },
-  ];
+  const dotProps = { r: 4, fill: "rgba(92,75,255,0.6)" };
+  const lineProps = {
+    stroke: "rgba(92,75,255,0.45)",
+    strokeWidth: "1.5",
+    strokeDasharray: "5 4",
+  };
 
   return (
     <svg
@@ -197,23 +190,31 @@ function ConnectingLines() {
         height: "100%",
         pointerEvents: "none",
         overflow: "visible",
-        zIndex: 1,
+        zIndex: 0,
       }}
-      viewBox="0 0 1100 450"
-      preserveAspectRatio="none"
+      viewBox="0 0 1100 590"
+      preserveAspectRatio="xMidYMid meet"
     >
-      {endpoints.map((pt, i) => (
-        <line
-          key={i}
-          x1={pt.x}
-          y1={pt.y}
-          x2={hub.x}
-          y2={hub.y}
-          stroke="rgba(92,75,255,0.4)"
-          strokeWidth="1.5"
-          strokeDasharray="5 4"
-        />
-      ))}
+      {/* top-left → hub */}
+      <line x1="177" y1="130" x2="550" y2="295" {...lineProps} />
+      {/* top-center → hub */}
+      <line x1="550" y1="130" x2="550" y2="260" {...lineProps} />
+      {/* top-right → hub */}
+      <line x1="923" y1="130" x2="550" y2="295" {...lineProps} />
+      {/* bottom-left → hub */}
+      <line x1="177" y1="460" x2="550" y2="330" {...lineProps} />
+      {/* bottom-center → hub */}
+      <line x1="550" y1="460" x2="550" y2="330" {...lineProps} />
+      {/* bottom-right → hub */}
+      <line x1="923" y1="460" x2="550" y2="330" {...lineProps} />
+
+      {/* endpoint dots */}
+      <circle cx="177" cy="130" {...dotProps} />
+      <circle cx="550" cy="130" {...dotProps} />
+      <circle cx="923" cy="130" {...dotProps} />
+      <circle cx="177" cy="460" {...dotProps} />
+      <circle cx="550" cy="460" {...dotProps} />
+      <circle cx="923" cy="460" {...dotProps} />
     </svg>
   );
 }
