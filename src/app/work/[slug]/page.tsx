@@ -62,7 +62,6 @@ export default async function CaseStudyPage({
         {/* Abstract bg video — Pulse/violet iridescent loop */}
         <video
           autoPlay loop muted playsInline
-          preload="metadata"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
           style={{ opacity: 0.30 }}
           src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/abstract-bg"
