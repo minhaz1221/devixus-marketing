@@ -57,8 +57,32 @@ export default async function CaseStudyPage({
     <main style={{ background: '#fff' }}>
 
       {/* ── HERO ── */}
-      <section style={{ background: 'var(--ink)', paddingTop: '100px' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 60px' }}>
+      <section className="relative isolate overflow-hidden" style={{ background: 'var(--ink)', paddingTop: '100px' }}>
+
+        {/* Abstract bg video — Pulse/violet iridescent loop */}
+        <video
+          autoPlay loop muted playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          style={{ opacity: 0.30 }}
+          src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/abstract-bg"
+        />
+
+        {/* Modest dim — abstract content needs less crushing than UI footage */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'rgba(10, 10, 11, 0.25)' }}
+        />
+
+        {/* Vignette — edge containment */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse at center, transparent 0%, rgba(10,10,11,0.5) 80%, rgba(10,10,11,0.8) 100%)',
+          }}
+        />
+
+        <div className="relative z-10" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 60px' }}>
           <div
             style={{
               display: 'grid',
