@@ -117,18 +117,18 @@ export default function AiConnected() {
       className="relative overflow-hidden isolate"
       style={{ background: 'var(--ink, #0A0A0B)' }}
     >
-      {/* Video texture — screen blend keeps ink dark, highlights come through as motion */}
+      {/* Video texture — plain opacity, no blend mode */}
       <video
         autoPlay loop muted playsInline
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        style={{ opacity: 0.25, mixBlendMode: 'screen' }}
+        style={{ opacity: 0.10 }}
         src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/rebuld-demo"
       />
 
-      {/* Flat Ink overlay — softens video everywhere before the vignette does edge work */}
+      {/* Flat Ink overlay — crushes bright video frames back to near-black */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'rgba(10, 10, 11, 0.35)' }}
+        style={{ background: 'rgba(10, 10, 11, 0.55)' }}
       />
 
       {/* Depth vignette — darkens corners so edges never show adjacent-section bleed */}
