@@ -148,7 +148,7 @@ export default async function CaseStudyPage({
 
               <p
                 style={{
-                  fontSize: '20px',
+                  fontSize: 'clamp(16px, 4vw, 20px)',
                   color: 'rgba(255,255,255,0.6)',
                   marginTop: '16px',
                   maxWidth: '500px',
@@ -604,7 +604,7 @@ export default async function CaseStudyPage({
       </div>
 
       {/* ── NEXT PROJECT ── */}
-      <section style={{ background: 'var(--ink)', padding: '80px 0' }}>
+      <section className="py-16 md:py-[80px]" style={{ background: 'var(--ink)' }}>
         <div className="max-w-[1280px] mx-auto px-4 md:px-[60px]">
           <NextProjectLink
             slug={cs.nextSlug}

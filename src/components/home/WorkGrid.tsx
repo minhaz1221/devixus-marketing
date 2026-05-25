@@ -264,13 +264,13 @@ function NunhemsCard({ card }: { card: WorkCard }) {
       href={`/work/${card.slug}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className="p-6 md:p-[36px]"
       style={{
         borderRadius: "16px",
         overflow: "hidden",
         background: "linear-gradient(135deg, #5C4BFF 0%, #4232E6 100%)",
         display: "flex",
         flexDirection: "column",
-        padding: "36px",
         gap: "10px",
         textDecoration: "none",
         color: "inherit",
@@ -331,6 +331,7 @@ function NunhemsCard({ card }: { card: WorkCard }) {
 function CTACard() {
   return (
     <article
+      className="p-6 md:p-[36px]"
       style={{
         borderRadius: "16px",
         background: "#0A0A0B",
@@ -338,7 +339,6 @@ function CTACard() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "36px",
         textAlign: "center",
         border: "1px solid rgba(255,255,255,0.06)",
         boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
@@ -348,7 +348,7 @@ function CTACard() {
         style={{
           fontFamily: "var(--font-space)",
           fontWeight: 700,
-          fontSize: "64px",
+          fontSize: "clamp(40px, 9vw, 64px)",
           color: "var(--glow)",
           lineHeight: 1,
           marginBottom: "8px",

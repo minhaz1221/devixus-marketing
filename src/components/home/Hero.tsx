@@ -72,7 +72,7 @@ export default function Hero() {
               fontSize: "clamp(32px, 7.5vw, 110px)",
               lineHeight: 0.88,
               color: "#fff",
-              letterSpacing: "-2px",
+              letterSpacing: "-0.03em",
             }}
           >
             Engineered
@@ -92,7 +92,7 @@ export default function Hero() {
           {/* Sub */}
           <p
             style={{
-              fontSize: "20px",
+              fontSize: "clamp(16px, 4.5vw, 20px)",
               color: "rgba(255,255,255,0.8)",
               lineHeight: 1.55,
             }}
@@ -136,7 +136,7 @@ export default function Hero() {
           </div>
 
           {/* Cycling review cards */}
-          <div style={{ position: "relative", height: "220px", marginTop: "8px" }}>
+          <div style={{ position: "relative", height: "220px", marginTop: "8px", overflow: "hidden" }}>
             {heroReviews.map((review, i) => (
               <div
                 key={review.name}

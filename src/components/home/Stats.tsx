@@ -125,7 +125,7 @@ export default function Stats() {
             <p
               style={{
                 color: "rgba(255,255,255,0.75)",
-                fontSize: "18px",
+                fontSize: "clamp(13px, 3.5vw, 18px)",
                 fontWeight: 500,
                 marginTop: "14px",
                 letterSpacing: "0.02em",

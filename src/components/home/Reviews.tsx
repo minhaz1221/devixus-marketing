@@ -11,7 +11,7 @@ function ReviewCard({ review }: { review: Review }) {
         background: "#fff",
         border: "1px solid rgba(0,0,0,0.07)",
         borderRadius: "20px",
-        padding: "36px",
+        padding: "24px",
         minHeight: "280px",
         display: "flex",
         flexDirection: "column",
