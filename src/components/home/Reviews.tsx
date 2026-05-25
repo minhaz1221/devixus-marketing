@@ -82,7 +82,7 @@ export default function Reviews() {
       </div>
 
       {/* Row 1 — forward */}
-      <div style={{ overflow: "hidden", marginTop: "56px", marginBottom: "20px" }}>
+      <div className="overflow-hidden mt-12 md:mt-16 mb-5">
         <div
           className="marquee-40-third"
           style={{ display: "flex", width: "max-content", gap: "20px", padding: "4px 0" }}

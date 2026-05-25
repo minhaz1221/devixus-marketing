@@ -152,7 +152,7 @@ export default function Contact() {
               fontSize: "clamp(36px, 4vw, 52px)",
               color: "#fff",
               lineHeight: 1.1,
-              marginBottom: "20px",
+              marginBottom: "24px",
             }}
           >
             Have something to ship?
@@ -162,7 +162,7 @@ export default function Contact() {
               fontSize: "17px",
               color: "rgba(255,255,255,0.6)",
               lineHeight: 1.6,
-              marginBottom: "32px",
+              marginBottom: "28px",
             }}
           >
             Tell us about your project. We read every message and reply within 24 hours.
@@ -227,10 +227,10 @@ export default function Contact() {
 
         {/* ── Right — form card ── */}
         <div
+          className="p-8 md:p-10"
           style={{
             background: "rgba(255,255,255,0.04)",
             borderRadius: "20px",
-            padding: "44px",
             border: "1px solid rgba(255,255,255,0.08)",
             backdropFilter: "blur(12px)",
           }}

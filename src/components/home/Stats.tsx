@@ -115,7 +115,7 @@ export default function Stats() {
   const configs = STATS.map((s) => parseStatValue(s.value));
 
   return (
-    <section ref={sectionRef} style={{ background: "var(--pulse)", padding: "60px 0" }}>
+    <section ref={sectionRef} className="py-10 md:py-16" style={{ background: "var(--pulse)" }}>
       <div
         className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-[1280px] mx-auto px-4 md:px-6"
       >

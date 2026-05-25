@@ -54,11 +54,10 @@ body {
 }
 ::selection { background: var(--glow); color: var(--ink); }
 
-/* ── Shared section padding ── */
-.section-pad { padding: 120px 0; }
-@media (max-width: 767px) {
-  .section-pad { padding: 64px 0; }
-}
+/* ── Shared section padding — py-16 md:py-24 lg:py-32 ── */
+.section-pad { padding: 64px 0; }
+@media (min-width: 768px)  { .section-pad { padding: 96px 0; } }
+@media (min-width: 1024px) { .section-pad { padding: 128px 0; } }
 
 /* ── Marquee animations ── */
 @keyframes marquee {
@@ -134,6 +133,12 @@ body {
 
 .hub-ring-2 {
   animation-delay: 0.75s;
+}
+
+/* ── Nav overlay fade-in ── */
+@keyframes fadeInOverlay {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Reduced motion ── */

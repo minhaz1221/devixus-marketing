@@ -46,11 +46,11 @@ const CARDS = [
 function Card({ card }: { card: typeof CARDS[number] }) {
   return (
     <div
+      className="p-6 md:p-7"
       style={{
         background: 'rgba(20, 20, 22, 0.7)',
         border: '1px solid rgba(255,255,255,0.12)',
         borderRadius: '18px',
-        padding: '28px 32px',
         display: 'flex',
         flexDirection: 'column',
         gap: '12px',
@@ -141,10 +141,10 @@ export default function AiConnected() {
 
       {/* All content above video and vignette */}
       <div
-        className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-[60px] py-16 md:py-[120px]"
+        className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-[60px] py-16 md:py-24 lg:py-32"
       >
         {/* Header */}
-        <div style={{ marginBottom: '48px' }}>
+        <div className="mb-12 md:mb-16">
           <p
             style={{
               fontFamily: 'var(--font-mono, monospace)',
@@ -196,7 +196,7 @@ export default function AiConnected() {
         </div>
 
         {/* Mobile-only: vertical card stack */}
-        <div className="md:hidden grid grid-cols-1 gap-4">
+        <div className="md:hidden grid grid-cols-1 gap-4 md:gap-6">
           {CARDS.map((card) => (
             <Card key={card.title} card={card} />
           ))}
@@ -273,7 +273,7 @@ export default function AiConnected() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '20px',
+              gap: '24px',
             }}
           >
             {CARDS.filter((c) => c.row === 0).map((card) => (
@@ -281,12 +281,12 @@ export default function AiConnected() {
             ))}
           </div>
 
-          {/* Hub — positive margin gives ≥40px clearance from each card row */}
+          {/* Hub */}
           <div
             style={{
               display: 'flex',
               justifyContent: 'center',
-              margin: '40px 0',
+              margin: '44px 0',
               position: 'relative',
               zIndex: 2,
             }}
@@ -326,7 +326,7 @@ export default function AiConnected() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '20px',
+              gap: '24px',
             }}
           >
             {CARDS.filter((c) => c.row === 1).map((card) => (

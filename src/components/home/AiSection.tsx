@@ -19,10 +19,10 @@ function ServiceCard({ service }: { service: Service }) {
 
   return (
     <article
+      className="p-6 md:p-7"
       style={{
         background: "#EDEAE2",
         borderRadius: "12px",
-        padding: "32px",
         transition: "transform 0.2s ease",
       }}
       onMouseEnter={(e) => {
@@ -95,12 +95,12 @@ export default function AiSection() {
     <section
       id="services"
       data-section="ai-services"
-      className="py-16 md:py-[120px]"
+      className="py-16 md:py-24 lg:py-32"
       style={{ background: "#ffffff" }}
     >
       <div className="max-w-[1280px] mx-auto px-4 md:px-6">
         {/* Section header */}
-        <div style={{ marginBottom: "56px" }}>
+        <div className="mb-12 md:mb-16">
           <p
             style={{
               fontFamily: "var(--font-mono, monospace)",
@@ -109,7 +109,7 @@ export default function AiSection() {
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: "#3F3F46",
-              marginBottom: "16px",
+              marginBottom: "12px",
             }}
           >
             WHAT WE BUILD
@@ -129,7 +129,7 @@ export default function AiSection() {
         </div>
 
         {/* Service cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12 md:mb-16 items-start">
           {SERVICES.map((service) => (
             <ServiceCard key={service.category} service={service} />
           ))}

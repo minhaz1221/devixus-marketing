@@ -393,7 +393,7 @@ export default function WorkGrid() {
     <section id="work" className="section-pad" style={{ background: "#F5F4F0" }}>
       <div className="max-w-[1480px] mx-auto px-4 md:px-6">
         {/* Section header */}
-        <div style={{ marginBottom: "48px" }}>
+        <div className="mb-12 md:mb-16">
           <p
             style={{
               fontSize: "11px",
@@ -402,7 +402,7 @@ export default function WorkGrid() {
               textTransform: "uppercase",
               color: "#71717A",
               fontFamily: "var(--font-space)",
-              marginBottom: "12px",
+              marginBottom: "14px",
             }}
           >
             Selected work

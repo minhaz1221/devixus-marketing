@@ -20,16 +20,16 @@ function NavLink({ href, label }: { href: string; label: string }) {
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className="text-[11px] md:text-[15px] px-2 py-2 md:px-[22px] md:py-[13px] rounded-full whitespace-nowrap transition-colors"
       style={{
         color: "rgba(255,255,255,0.8)",
         textDecoration: "none",
-        fontSize: "15px",
         fontWeight: 600,
-        padding: "13px 22px",
-        borderRadius: "999px",
         background: hovered ? "rgba(255,255,255,0.12)" : "transparent",
         transition: "background 0.15s",
-        whiteSpace: "nowrap",
+        display: "block",
+        minHeight: "36px",
+        lineHeight: "20px",
       }}
     >
       {label}
@@ -42,8 +42,7 @@ export default function FloatingNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const heroHeight =
-        document.getElementById("hero")?.offsetHeight ?? 600;
+      const heroHeight = document.getElementById("hero")?.offsetHeight ?? 600;
       setVisible(window.scrollY > heroHeight * 0.8);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -52,62 +51,51 @@ export default function FloatingNav() {
   }, []);
 
   return (
-    <div className="hidden md:block">
     <div
       aria-hidden={!visible}
+      className="fixed z-50 left-1/2 bottom-4 md:bottom-8 flex items-center rounded-full"
       style={{
-        position: "fixed",
-        bottom: "32px",
-        left: "50%",
         transform: `translateX(-50%) translateY(${visible ? "0" : "20px"})`,
         opacity: visible ? 1 : 0,
         transition: "opacity 0.3s ease, transform 0.3s ease",
         pointerEvents: visible ? "auto" : "none",
-        zIndex: 50,
-        display: "flex",
-        alignItems: "center",
         background: "var(--pulse)",
-        borderRadius: "999px",
-        padding: "6px",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+        border: "1px solid rgba(255,255,255,0.15)",
+        backdropFilter: "blur(12px)",
+        boxShadow: "0 8px 32px rgba(92,75,255,0.35), 0 2px 8px rgba(0,0,0,0.3)",
+        padding: "4px",
+        maxWidth: "calc(100vw - 24px)",
+        gap: "2px",
       }}
     >
       {LEFT_LINKS.map((link) => (
         <NavLink key={link.href} href={link.href} label={link.label} />
       ))}
 
-      {/* Spinning border CTA — center */}
+      {/* CTA — Glow background */}
       <div
-        className="spinning-border"
-        style={{
-          padding: "2px",
-          borderRadius: "999px",
-          margin: "0 4px",
-          flexShrink: 0,
-        }}
+        className="spinning-border md:block"
+        style={{ padding: "2px", borderRadius: "999px", margin: "0 2px", flexShrink: 0 }}
       >
         <Link
           href="#contact"
+          className="text-[11px] md:text-[14px] px-3 md:px-5 py-1.5 md:py-[9px] rounded-full font-bold whitespace-nowrap block"
           style={{
-            display: "block",
-            padding: "9px 20px",
-            borderRadius: "999px",
             background: "var(--ink-2)",
             color: "var(--glow)",
-            fontSize: "14px",
-            fontWeight: 700,
             textDecoration: "none",
-            whiteSpace: "nowrap",
+            minHeight: "32px",
+            lineHeight: "20px",
           }}
         >
-          Start a Project
+          <span className="hidden md:inline">Start a Project</span>
+          <span className="md:hidden">Start →</span>
         </Link>
       </div>
 
       {RIGHT_LINKS.map((link) => (
         <NavLink key={link.href} href={link.href} label={link.label} />
       ))}
-    </div>
     </div>
   );
 }
