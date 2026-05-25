@@ -56,6 +56,9 @@ body {
 
 /* ── Shared section padding ── */
 .section-pad { padding: 120px 0; }
+@media (max-width: 767px) {
+  .section-pad { padding: 64px 0; }
+}
 
 /* ── Marquee animations ── */
 @keyframes marquee {

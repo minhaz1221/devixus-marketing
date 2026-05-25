@@ -141,11 +141,10 @@ export default function AiConnected() {
 
       {/* All content above video and vignette */}
       <div
-        className="relative z-10"
-        style={{ maxWidth: '1280px', margin: '0 auto', padding: '120px 60px' }}
+        className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-[60px] py-16 md:py-[120px]"
       >
         {/* Header */}
-        <div style={{ marginBottom: '80px' }}>
+        <div style={{ marginBottom: '48px' }}>
           <p
             style={{
               fontFamily: 'var(--font-mono, monospace)',
@@ -162,7 +161,7 @@ export default function AiConnected() {
             style={{
               fontFamily: "'Bricolage Grotesque', sans-serif",
               fontWeight: 700,
-              fontSize: 'clamp(44px, 6vw, 80px)',
+              fontSize: 'clamp(32px, 6vw, 80px)',
               letterSpacing: '-0.04em',
               lineHeight: 0.92,
               color: '#fff',
@@ -196,8 +195,15 @@ export default function AiConnected() {
           </p>
         </div>
 
-        {/* Constellation container — aspectRatio drives SVG height; viewBox unchanged */}
-        <div style={{ position: 'relative', aspectRatio: '1020 / 600' }}>
+        {/* Mobile-only: vertical card stack */}
+        <div className="md:hidden grid grid-cols-1 gap-4">
+          {CARDS.map((card) => (
+            <Card key={card.title} card={card} />
+          ))}
+        </div>
+
+        {/* Desktop constellation — hidden on mobile */}
+        <div className="hidden md:block" style={{ position: 'relative', aspectRatio: '1020 / 600' }}>
 
           {/* Static L-shaped orthogonal routing SVG */}
           <svg

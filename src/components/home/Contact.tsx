@@ -58,6 +58,7 @@ const inputStyle: React.CSSProperties = {
   outline: "none",
   transition: "border-color 0.15s",
   fontFamily: "inherit",
+  minHeight: "48px",
 };
 
 type ApiResponse = { success?: boolean; error?: string };
@@ -127,17 +128,8 @@ export default function Contact() {
       />
 
       <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "grid",
-          gridTemplateColumns: "1fr 1.4fr",
-          gap: "80px",
-          alignItems: "start",
-          position: "relative",
-          zIndex: 1,
-        }}
+        className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-12 md:gap-[80px] items-start max-w-[1280px] mx-auto px-4 md:px-6"
+        style={{ position: "relative", zIndex: 1 }}
       >
         {/* ── Left ── */}
         <div>
@@ -306,7 +298,7 @@ export default function Contact() {
                 />
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
                 <div>
                   <label style={{ display: "block", color: "rgba(255,255,255,0.6)", fontSize: "13px", fontWeight: 500, marginBottom: "6px" }}>
                     Email

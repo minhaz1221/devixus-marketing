@@ -21,31 +21,14 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      className="pt-16 pb-20 md:pt-[100px] md:pb-[120px]"
       style={{
         background: "linear-gradient(140deg, #5C4BFF 0%, #4232E6 55%, #3621B8 100%)",
-        padding: "100px 0 120px",
       }}
     >
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "grid",
-          gridTemplateColumns: "1fr 1.25fr",
-          gap: "56px",
-          alignItems: "stretch",
-        }}
-      >
+      <div className="max-w-[1280px] mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-[1fr_1.25fr] gap-10 md:gap-[56px] items-stretch">
         {/* ── Left column ── */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            gap: "28px",
-          }}
-        >
+        <div className="flex flex-col justify-center gap-7">
           {/* Status pill */}
           <div
             style={{
@@ -86,7 +69,7 @@ export default function Hero() {
             style={{
               fontFamily: "var(--font-bricolage)",
               fontWeight: 700,
-              fontSize: "clamp(64px, 7.5vw, 110px)",
+              fontSize: "clamp(32px, 7.5vw, 110px)",
               lineHeight: 0.88,
               color: "#fff",
               letterSpacing: "-2px",
@@ -112,7 +95,6 @@ export default function Hero() {
               fontSize: "20px",
               color: "rgba(255,255,255,0.8)",
               lineHeight: 1.55,
-              maxWidth: "480px",
             }}
           >
             We build production-grade web apps, SaaS products, and AI
@@ -120,9 +102,10 @@ export default function Hero() {
           </p>
 
           {/* CTA buttons */}
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
             <Link
               href="#contact"
+              className="text-center flex items-center justify-center min-h-[44px]"
               style={{
                 background: "var(--glow)",
                 color: "var(--ink)",
@@ -131,14 +114,13 @@ export default function Hero() {
                 fontWeight: 700,
                 fontSize: "16px",
                 textDecoration: "none",
-                display: "inline-block",
-                transition: "transform 0.15s",
               }}
             >
               Start a project →
             </Link>
             <Link
               href="#work"
+              className="text-center flex items-center justify-center min-h-[44px]"
               style={{
                 border: "2px solid rgba(255,255,255,0.3)",
                 color: "#fff",
@@ -147,8 +129,6 @@ export default function Hero() {
                 fontWeight: 600,
                 fontSize: "16px",
                 textDecoration: "none",
-                display: "inline-block",
-                transition: "background 0.15s",
               }}
             >
               See the work
@@ -206,10 +186,8 @@ export default function Hero() {
 
         {/* ── Right column — video ── */}
         <div
+          className="rounded-[3px] overflow-hidden min-h-[280px] md:min-h-[540px]"
           style={{
-            borderRadius: "3px",
-            overflow: "hidden",
-            minHeight: "540px",
             boxShadow: "0 40px 100px rgba(0,0,0,0.5)",
             background: "var(--ink)",
             width: "100%",
@@ -220,14 +198,7 @@ export default function Hero() {
             muted
             loop
             playsInline
-            style={{
-              width: "100%",
-              height: "100%",
-              minHeight: "540px",
-              objectFit: "cover",
-              display: "block",
-              borderRadius: "3px",
-            }}
+            className="w-full h-full min-h-[280px] md:min-h-[540px] object-cover block rounded-[3px]"
           >
             <source
               src="https://res.cloudinary.com/dqdnuqh0u/video/upload/q_auto/rebuld-demo"

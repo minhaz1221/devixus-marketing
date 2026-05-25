@@ -95,9 +95,10 @@ export default function AiSection() {
     <section
       id="services"
       data-section="ai-services"
-      style={{ background: "#ffffff", padding: "120px 0" }}
+      className="py-16 md:py-[120px]"
+      style={{ background: "#ffffff" }}
     >
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+      <div className="max-w-[1280px] mx-auto px-4 md:px-6">
         {/* Section header */}
         <div style={{ marginBottom: "56px" }}>
           <p
@@ -128,15 +129,7 @@ export default function AiSection() {
         </div>
 
         {/* Service cards grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "20px",
-            marginBottom: "64px",
-            alignItems: "flex-start",
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16 items-start">
           {SERVICES.map((service) => (
             <ServiceCard key={service.category} service={service} />
           ))}

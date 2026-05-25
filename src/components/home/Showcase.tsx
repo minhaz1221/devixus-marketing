@@ -143,9 +143,8 @@ function TagStrip({
 function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
   return (
     <div
+      className="w-[85vw] md:w-[520px] flex-shrink-0"
       style={{
-        width: 520,
-        flexShrink: 0,
         borderRadius: 20,
         overflow: "hidden",
         background: project.dark ? "var(--ink-2)" : "#fff",
@@ -156,12 +155,9 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
       }}
     >
       <div
+        className="w-full aspect-[520/390] relative flex-shrink-0"
         style={{
-          width: 520,
-          height: 390,
-          position: "relative",
           background: `linear-gradient(135deg, ${project.accent}40, ${project.accent}20)`,
-          flexShrink: 0,
         }}
       >
         {project.image && (
@@ -169,7 +165,7 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
             src={project.image}
             alt={project.title}
             fill
-            sizes="520px"
+            sizes="(max-width: 768px) 85vw, 520px"
             style={{ objectFit: "cover", objectPosition: "top" }}
           />
         )}
@@ -205,7 +201,7 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
 export default function Showcase() {
   return (
     <section id="showcase" style={{ background: "#fff", padding: "80px 0 0" }}>
-      <div style={{ maxWidth: "1480px", margin: "0 auto", padding: "0 24px", marginBottom: "48px" }}>
+      <div className="max-w-[1480px] mx-auto px-4 md:px-6 mb-12">
         <SectionHeader eyebrow="Selected work" title="Shipped. Live. Earning." />
       </div>
 

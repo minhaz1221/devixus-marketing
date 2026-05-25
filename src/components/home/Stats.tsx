@@ -79,7 +79,7 @@ function CountUpNumber({
       style={{
         fontFamily: "var(--font-space)",
         fontWeight: 700,
-        fontSize: "clamp(64px, 8vw, 96px)",
+        fontSize: "clamp(40px, 8vw, 96px)",
         lineHeight: 1,
       }}
     >
@@ -117,15 +117,7 @@ export default function Stats() {
   return (
     <section ref={sectionRef} style={{ background: "var(--pulse)", padding: "60px 0" }}>
       <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: "32px",
-          textAlign: "center",
-        }}
+        className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-[1280px] mx-auto px-4 md:px-6"
       >
         {STATS.map((stat, i) => (
           <div key={stat.label}>

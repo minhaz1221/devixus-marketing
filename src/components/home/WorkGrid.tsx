@@ -391,7 +391,7 @@ function CTACard() {
 export default function WorkGrid() {
   return (
     <section id="work" className="section-pad" style={{ background: "#F5F4F0" }}>
-      <div style={{ maxWidth: "1480px", margin: "0 auto", padding: "0 24px" }}>
+      <div className="max-w-[1480px] mx-auto px-4 md:px-6">
         {/* Section header */}
         <div style={{ marginBottom: "48px" }}>
           <p
@@ -422,47 +422,24 @@ export default function WorkGrid() {
         </div>
 
         {/* Row 1 — 1.5fr / 1fr, cards at natural height */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.5fr 1fr",
-            alignItems: "start",
-            gap: "16px",
-            marginBottom: "16px",
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] items-start gap-4 mb-4">
           <Card card={WORK[0]} />
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <div className="flex flex-col gap-4">
             <Card card={WORK[1]} />
             <NunhemsCard card={WORK[2]} />
           </div>
         </div>
 
         {/* Row 2 — 1fr / 1.5fr */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.5fr",
-            alignItems: "start",
-            gap: "16px",
-            marginBottom: "16px",
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] items-start gap-4 mb-4">
           <Card card={WORK[3]} />
           <Card card={WORK[4]} />
         </div>
 
         {/* Row 3 — 1.5fr / 1fr */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.5fr 1fr",
-            alignItems: "start",
-            gap: "16px",
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] items-start gap-4">
           <Card card={WORK[5]} />
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <div className="flex flex-col gap-4">
             <Card card={WORK[6]} />
             <CTACard />
           </div>

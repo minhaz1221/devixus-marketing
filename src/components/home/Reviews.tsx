@@ -6,14 +6,13 @@ import SectionHeader from "@/components/ui/SectionHeader";
 function ReviewCard({ review }: { review: Review }) {
   return (
     <article
+      className="w-[280px] md:w-[360px] flex-shrink-0"
       style={{
         background: "#fff",
         border: "1px solid rgba(0,0,0,0.07)",
         borderRadius: "20px",
         padding: "36px",
         minHeight: "280px",
-        width: "420px",
-        flexShrink: 0,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -78,7 +77,7 @@ export default function Reviews() {
 
   return (
     <section className="section-pad" style={{ background: "#F7F7F7", overflow: "hidden" }}>
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+      <div className="max-w-[1280px] mx-auto px-4 md:px-6">
         <SectionHeader eyebrow="Client reviews" title="Chosen by real brands." />
       </div>
 

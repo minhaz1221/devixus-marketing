@@ -52,6 +52,7 @@ export default function FloatingNav() {
   }, []);
 
   return (
+    <div className="hidden md:block">
     <div
       aria-hidden={!visible}
       style={{
@@ -106,6 +107,7 @@ export default function FloatingNav() {
       {RIGHT_LINKS.map((link) => (
         <NavLink key={link.href} href={link.href} label={link.label} />
       ))}
+    </div>
     </div>
   );
 }

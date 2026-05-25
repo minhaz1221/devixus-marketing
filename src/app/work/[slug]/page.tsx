@@ -57,7 +57,7 @@ export default async function CaseStudyPage({
     <main style={{ background: '#fff' }}>
 
       {/* ── HERO ── */}
-      <section className="relative isolate overflow-hidden" style={{ background: 'var(--ink)', paddingTop: '100px' }}>
+      <section className="relative isolate overflow-hidden pt-16 md:pt-[100px]" style={{ background: 'var(--ink)' }}>
 
         {/* Abstract bg video — Pulse/violet iridescent loop */}
         <video
@@ -81,19 +81,12 @@ export default async function CaseStudyPage({
           }}
         />
 
-        <div className="relative z-10" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 60px' }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '55fr 45fr',
-              gap: '60px',
-              alignItems: 'stretch',
-            }}
-          >
+        <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-[60px]">
+          <div className="grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-10 md:gap-[60px] items-stretch">
             {/* Left: copy */}
             <div
+              className="pb-8 md:pb-[60px]"
               style={{
-                paddingBottom: '60px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'flex-end',
@@ -182,12 +175,12 @@ export default async function CaseStudyPage({
 
             {/* Right: hero image */}
             <div
+              className="min-h-[240px] md:min-h-[400px]"
               style={{
                 position: 'relative',
                 borderRadius: '12px 12px 0 0',
                 overflow: 'hidden',
                 boxShadow: '0 -20px 60px rgba(92,75,255,0.15)',
-                minHeight: '400px',
               }}
             >
               <Image
@@ -206,14 +199,7 @@ export default async function CaseStudyPage({
       {/* ── METRICS BAND ── */}
       <section style={{ background: 'var(--pulse)', padding: '48px 0' }}>
         <div
-          style={{
-            maxWidth: '1280px',
-            margin: '0 auto',
-            padding: '0 60px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '32px',
-          }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-[1280px] mx-auto px-4 md:px-[60px]"
         >
           {cs.metrics.map(m => {
             const hasPlus = m.value.endsWith('+')
@@ -224,7 +210,7 @@ export default async function CaseStudyPage({
                   style={{
                     fontFamily: 'var(--font-space)',
                     fontWeight: 700,
-                    fontSize: '56px',
+                    fontSize: 'clamp(32px, 5vw, 56px)',
                     color: '#fff',
                     lineHeight: 1,
                     letterSpacing: '-0.02em',
@@ -254,22 +240,10 @@ export default async function CaseStudyPage({
       </section>
 
       {/* ── CONTENT AREA ── */}
-      <div
-        style={{
-          maxWidth: '1100px',
-          margin: '0 auto',
-          padding: '0 60px',
-        }}
-      >
+      <div className="max-w-[1100px] mx-auto px-4 md:px-[60px]">
         {/* Two-column layout */}
         <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '68fr 32fr',
-            gap: '80px',
-            padding: '80px 0',
-            alignItems: 'start',
-          }}
+          className="grid grid-cols-1 lg:grid-cols-[68fr_32fr] gap-10 lg:gap-[80px] py-16 lg:py-[80px] items-start"
         >
           {/* ── LEFT COLUMN ── */}
           <div>
@@ -421,7 +395,7 @@ export default async function CaseStudyPage({
           </div>
 
           {/* ── RIGHT COLUMN: sticky sidebar ── */}
-          <div style={{ position: 'sticky', top: '100px' }}>
+          <div className="lg:sticky" style={{ top: '100px' }}>
 
             {/* Project Details card */}
             <div
@@ -556,11 +530,11 @@ export default async function CaseStudyPage({
         {/* ── TESTIMONIAL — full width ── */}
         {cs.testimonial && (
           <div
+            className="px-6 py-8 md:p-[48px]"
             style={{
               background: 'linear-gradient(135deg, #f8f7ff, #f0eeff)',
               borderLeft: '4px solid var(--pulse)',
               borderRadius: '16px',
-              padding: '48px',
               marginBottom: '80px',
             }}
           >
@@ -631,7 +605,7 @@ export default async function CaseStudyPage({
 
       {/* ── NEXT PROJECT ── */}
       <section style={{ background: 'var(--ink)', padding: '80px 0' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 60px' }}>
+        <div className="max-w-[1280px] mx-auto px-4 md:px-[60px]">
           <NextProjectLink
             slug={cs.nextSlug}
             title={cs.nextTitle}
