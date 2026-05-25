@@ -243,7 +243,7 @@ export default async function CaseStudyPage({
       <div className="max-w-[1100px] mx-auto px-4 md:px-[60px]">
         {/* Two-column layout */}
         <div
-          className="grid grid-cols-1 lg:grid-cols-[68fr_32fr] gap-10 lg:gap-[80px] py-16 lg:py-[80px] items-start"
+          className="grid grid-cols-1 md:grid-cols-[68fr_32fr] gap-10 md:gap-[80px] py-16 md:py-[80px] items-start"
         >
           {/* ── LEFT COLUMN ── */}
           <div>
@@ -395,7 +395,7 @@ export default async function CaseStudyPage({
           </div>
 
           {/* ── RIGHT COLUMN: sticky sidebar ── */}
-          <div className="lg:sticky" style={{ top: '100px' }}>
+          <div className="md:sticky" style={{ top: '100px' }}>
 
             {/* Project Details card */}
             <div

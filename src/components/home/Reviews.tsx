@@ -6,12 +6,12 @@ import SectionHeader from "@/components/ui/SectionHeader";
 function ReviewCard({ review }: { review: Review }) {
   return (
     <article
-      className="w-[280px] md:w-[360px] flex-shrink-0"
+      className="w-[280px] md:w-[420px] flex-shrink-0"
       style={{
         background: "#fff",
         border: "1px solid rgba(0,0,0,0.07)",
         borderRadius: "20px",
-        padding: "24px",
+        padding: "32px",
         minHeight: "280px",
         display: "flex",
         flexDirection: "column",
