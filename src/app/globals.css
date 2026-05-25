@@ -34,7 +34,9 @@
   --g6: #52525B;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+}
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-bricolage), system-ui, sans-serif;
