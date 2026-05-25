@@ -117,7 +117,7 @@ export default function Stats() {
   return (
     <section ref={sectionRef} className="py-10 md:py-16" style={{ background: "var(--pulse)" }}>
       <div
-        className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-[1280px] mx-auto px-4 md:px-6"
+        className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-7xl mx-auto px-4 md:px-6 lg:px-8"
       >
         {STATS.map((stat, i) => (
           <div key={stat.label}>

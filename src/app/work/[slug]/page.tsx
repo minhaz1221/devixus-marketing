@@ -81,7 +81,7 @@ export default async function CaseStudyPage({
           }}
         />
 
-        <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-[60px]">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-10 md:gap-[60px] items-stretch">
             {/* Left: copy */}
             <div
@@ -199,7 +199,7 @@ export default async function CaseStudyPage({
       {/* ── METRICS BAND ── */}
       <section style={{ background: 'var(--pulse)', padding: '48px 0' }}>
         <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-[1280px] mx-auto px-4 md:px-[60px]"
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-4 md:px-6 lg:px-8"
         >
           {cs.metrics.map(m => {
             const hasPlus = m.value.endsWith('+')
@@ -240,7 +240,7 @@ export default async function CaseStudyPage({
       </section>
 
       {/* ── CONTENT AREA ── */}
-      <div className="max-w-[1100px] mx-auto px-4 md:px-[60px]">
+      <div className="max-w-[1100px] mx-auto px-4 md:px-6 lg:px-8">
         {/* Two-column layout */}
         <div
           className="grid grid-cols-1 md:grid-cols-[68fr_32fr] gap-10 md:gap-[80px] py-16 md:py-[80px] items-start"
@@ -605,7 +605,7 @@ export default async function CaseStudyPage({
 
       {/* ── NEXT PROJECT ── */}
       <section className="py-16 md:py-[80px]" style={{ background: 'var(--ink)' }}>
-        <div className="max-w-[1280px] mx-auto px-4 md:px-[60px]">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <NextProjectLink
             slug={cs.nextSlug}
             title={cs.nextTitle}

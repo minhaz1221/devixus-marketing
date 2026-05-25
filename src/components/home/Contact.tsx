@@ -128,7 +128,7 @@ export default function Contact() {
       />
 
       <div
-        className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-12 md:gap-[80px] items-start max-w-[1280px] mx-auto px-4 md:px-6"
+        className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-12 md:gap-[80px] items-start max-w-7xl mx-auto px-4 md:px-6 lg:px-8"
         style={{ position: "relative", zIndex: 1 }}
       >
         {/* ── Left ── */}

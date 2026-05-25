@@ -26,7 +26,7 @@ export default function Hero() {
         background: "linear-gradient(140deg, #5C4BFF 0%, #4232E6 55%, #3621B8 100%)",
       }}
     >
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-[1fr_1.25fr] gap-10 md:gap-[56px] items-stretch">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-[1fr_1.25fr] gap-10 md:gap-[56px] items-stretch">
         {/* ── Left column ── */}
         <div className="flex flex-col justify-center gap-7">
           {/* Status pill */}

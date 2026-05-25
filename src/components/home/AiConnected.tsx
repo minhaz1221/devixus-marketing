@@ -141,7 +141,7 @@ export default function AiConnected() {
 
       {/* All content above video and vignette */}
       <div
-        className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-[60px] py-16 md:py-24 lg:py-32"
+        className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24 lg:py-32"
       >
         {/* Header */}
         <div className="mb-12 md:mb-16">

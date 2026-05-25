@@ -201,7 +201,7 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
 export default function Showcase() {
   return (
     <section id="showcase" className="pt-16 md:pt-24 lg:pt-32 pb-0" style={{ background: "#fff" }}>
-      <div className="max-w-[1480px] mx-auto px-4 md:px-6 mb-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mb-8 md:mb-12">
         <SectionHeader eyebrow="Selected work" title="Shipped. Live. Earning." />
       </div>
 

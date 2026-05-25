@@ -14,7 +14,7 @@ const CODE_SNIPPET = `<script
 export default function WidgetsCard() {
   return (
     <section id="widgets" className="py-16 md:py-24 lg:py-32" style={{ background: "#fff" }}>
-      <div className="mx-auto max-w-[1280px] px-4 md:px-6">
+      <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <article
           className="rounded-2xl md:rounded-3xl p-8 md:p-14 lg:p-16"
           style={{

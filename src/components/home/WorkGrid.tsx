@@ -391,7 +391,7 @@ function CTACard() {
 export default function WorkGrid() {
   return (
     <section id="work" className="section-pad" style={{ background: "#F5F4F0" }}>
-      <div className="max-w-[1480px] mx-auto px-4 md:px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-12 md:mb-16">
           <p

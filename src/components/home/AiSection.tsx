@@ -98,7 +98,7 @@ export default function AiSection() {
       className="py-16 md:py-24 lg:py-32"
       style={{ background: "#ffffff" }}
     >
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-12 md:mb-16">
           <p

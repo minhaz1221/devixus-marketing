@@ -77,7 +77,7 @@ export default function Reviews() {
 
   return (
     <section className="section-pad" style={{ background: "#F7F7F7", overflow: "hidden" }}>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <SectionHeader eyebrow="Client reviews" title="Chosen by real brands." />
       </div>
 
