@@ -26,25 +26,18 @@ export default function ScrollToTop() {
     <button
       onClick={scrollUp}
       aria-label="Scroll to top"
+      // Mobile: bottom-[76px] clears FloatingNav (bottom-4 + ~44px height + 16px gap).
+      // Desktop: bottom-8 sits at same level as FloatingNav but far-right — no overlap.
+      className="fixed bottom-[76px] right-4 md:bottom-8 md:right-8 w-[48px] h-[48px] rounded-full flex items-center justify-center z-[49]"
       style={{
-        position: "fixed",
-        bottom: "32px",
-        right: "32px",
-        width: "52px",
-        height: "52px",
-        borderRadius: "50%",
         background: "var(--pulse)",
         border: "none",
         cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
         boxShadow: "0 4px 20px rgba(92,75,255,0.4)",
         transition: "opacity 0.25s ease, transform 0.25s ease",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(12px)",
         pointerEvents: visible ? "auto" : "none",
-        zIndex: 49,
       }}
     >
       <MakersCrossGlow />

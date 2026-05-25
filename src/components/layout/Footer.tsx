@@ -19,16 +19,7 @@ export default function Footer() {
       }}
     >
       <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "16px",
-        }}
+        className="max-w-[1280px] mx-auto px-4 md:px-6 flex items-center justify-between flex-wrap gap-4"
       >
         <Link
           href="/"

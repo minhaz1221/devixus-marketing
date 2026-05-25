@@ -72,9 +72,9 @@ export default function FloatingNav() {
         <NavLink key={link.href} href={link.href} label={link.label} />
       ))}
 
-      {/* CTA — Glow background */}
+      {/* CTA — spinning border highlight */}
       <div
-        className="spinning-border md:block"
+        className="spinning-border"
         style={{ padding: "2px", borderRadius: "999px", margin: "0 2px", flexShrink: 0 }}
       >
         <Link

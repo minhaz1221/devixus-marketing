@@ -207,7 +207,7 @@ export default function Showcase() {
 
       <TagStrip tags={TOP_TAGS} direction="left" />
 
-      <div style={{ overflow: "hidden", padding: "24px 0" }}>
+      <div style={{ overflow: "hidden", padding: "24px 0 24px 16px" }}>
         <div
           className="marquee-30"
           style={{ display: "flex", gap: "20px", width: "max-content" }}

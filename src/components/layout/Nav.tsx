@@ -5,9 +5,14 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 
-function MakersCross() {
+function MakersCross({ className }: { className?: string }) {
   return (
-    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+    <svg
+      viewBox="0 0 34 34"
+      fill="none"
+      aria-hidden="true"
+      className={className ?? "h-7 w-auto md:h-8"}
+    >
       <line x1="3" y1="31" x2="31" y2="3" stroke="#C9FF3B" strokeWidth="6" strokeLinecap="round" />
       <line x1="3" y1="3" x2="31" y2="31" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
     </svg>
@@ -19,13 +24,11 @@ export default function Nav() {
 
   const close = useCallback(() => setOpen(false), []);
 
-  // Body scroll lock
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  // ESC to close
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") close(); };
     document.addEventListener("keydown", onKey);
@@ -36,27 +39,23 @@ export default function Nav() {
     <>
       {/* ── Sticky top bar ── */}
       <nav
-        className="sticky top-0 z-50 flex items-center"
+        className="sticky top-0 z-50 flex items-center h-14 md:h-16"
         style={{
           background: "var(--pulse)",
           borderBottom: "1px solid rgba(255,255,255,0.1)",
-          height: "64px",
         }}
       >
         <div className="max-w-[1280px] mx-auto px-4 md:px-6 w-full flex items-center justify-between">
+          {/* Logo */}
           <Link
             href="/"
-            style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}
+            className="flex items-center gap-2 h-7 md:h-8"
+            style={{ textDecoration: "none" }}
           >
             <MakersCross />
             <span
-              style={{
-                fontFamily: "var(--font-space)",
-                fontWeight: 700,
-                color: "#fff",
-                fontSize: "20px",
-                letterSpacing: "-0.3px",
-              }}
+              className="text-[17px] md:text-[19px] font-semibold tracking-tight"
+              style={{ fontFamily: "var(--font-space)", color: "#fff" }}
             >
               Devixus
             </span>
@@ -96,7 +95,7 @@ export default function Nav() {
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger — 44×44 tap target, icon h-5 w-5 */}
           <button
             className="md:hidden flex items-center justify-center"
             onClick={() => setOpen(true)}
@@ -110,7 +109,7 @@ export default function Nav() {
               height: "44px",
             }}
           >
-            <Menu size={22} color="white" strokeWidth={2} />
+            <Menu className="h-5 w-5" color="white" strokeWidth={2} />
           </button>
         </div>
       </nav>
@@ -131,32 +130,21 @@ export default function Nav() {
             animation: "fadeInOverlay 0.2s ease-out",
           }}
         >
-          {/* Overlay header row */}
+          {/* Overlay header — same height as sticky nav */}
           <div
-            style={{
-              height: "64px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "0 16px",
-              flexShrink: 0,
-              borderBottom: "1px solid rgba(255,255,255,0.07)",
-            }}
+            className="h-14 md:h-16 flex items-center justify-between px-4 flex-shrink-0"
+            style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}
           >
             <Link
               href="/"
               onClick={close}
-              style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}
+              className="flex items-center gap-2 h-7 md:h-8"
+              style={{ textDecoration: "none" }}
             >
               <MakersCross />
               <span
-                style={{
-                  fontFamily: "var(--font-space)",
-                  fontWeight: 700,
-                  color: "#fff",
-                  fontSize: "20px",
-                  letterSpacing: "-0.3px",
-                }}
+                className="text-[17px] md:text-[19px] font-semibold tracking-tight"
+                style={{ fontFamily: "var(--font-space)", color: "#fff" }}
               >
                 Devixus
               </span>
@@ -175,12 +163,20 @@ export default function Nav() {
                 justifyContent: "center",
               }}
             >
-              <X size={22} color="white" strokeWidth={2} />
+              <X className="h-5 w-5" color="white" strokeWidth={2} />
             </button>
           </div>
 
           {/* Nav links */}
-          <div style={{ flex: 1, padding: "32px 24px", display: "flex", flexDirection: "column", overflowY: "auto" }}>
+          <div
+            style={{
+              flex: 1,
+              padding: "32px 24px",
+              display: "flex",
+              flexDirection: "column",
+              overflowY: "auto",
+            }}
+          >
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -198,8 +194,12 @@ export default function Nav() {
                   borderBottom: "1px solid rgba(255,255,255,0.07)",
                   transition: "color 0.15s",
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--glow)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.85)"; }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.color = "var(--glow)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.85)";
+                }}
               >
                 {link.label}
               </Link>
@@ -238,8 +238,8 @@ export default function Nav() {
               alignItems: "center",
             }}
           >
-            <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)", fontWeight: 400 }}>Privacy</span>
-            <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)", fontWeight: 400 }}>Terms</span>
+            <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Privacy</span>
+            <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Terms</span>
           </div>
         </div>
       )}

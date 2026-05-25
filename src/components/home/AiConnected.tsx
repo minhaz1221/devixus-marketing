@@ -183,8 +183,8 @@ export default function AiConnected() {
             delivered by humans.
           </h2>
           <p
+            className="text-base md:text-[19px]"
             style={{
-              fontSize: '19px',
               color: 'rgba(255,255,255,0.5)',
               maxWidth: '560px',
               lineHeight: 1.65,

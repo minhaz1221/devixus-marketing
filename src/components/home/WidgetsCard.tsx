@@ -13,133 +13,99 @@ const CODE_SNIPPET = `<script
 
 export default function WidgetsCard() {
   return (
-    <section id="widgets" className="section-pad" style={{ background: "#fff" }}>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6">
-
-        {/* Section header */}
-        <div className="text-center mb-12 md:mb-16">
+    <section id="widgets" className="py-16 md:py-24 lg:py-32" style={{ background: "#fff" }}>
+      <div className="mx-auto max-w-[1280px] px-4 md:px-6">
+        <article
+          className="rounded-2xl md:rounded-3xl p-8 md:p-12 lg:p-16"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--pulse) 0%, var(--pulse-deep) 55%, var(--pulse-deeper) 100%)",
+          }}
+        >
+          {/* Kicker */}
           <p
             style={{
-              fontSize: "11px",
+              fontFamily: "var(--font-mono, monospace)",
+              fontSize: "12px",
               fontWeight: 600,
-              letterSpacing: "0.12em",
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
-              color: "var(--g5)",
-              marginBottom: "12px",
+              color: "rgba(255,255,255,0.6)",
+              marginBottom: "16px",
             }}
           >
             Our product
           </p>
+
+          {/* Headline — "Ten widgets." in Glow */}
           <h2
             style={{
               fontFamily: "var(--font-bricolage)",
               fontWeight: 700,
-              fontSize: "clamp(28px, 5vw, 56px)",
-              color: "var(--ink)",
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
+              fontSize: "clamp(32px, 6vw, 64px)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.03em",
+              color: "#fff",
+              marginBottom: "20px",
             }}
           >
             One line of code.{" "}
-            <span style={{ color: "var(--pulse)" }}>Ten widgets.</span>
+            <span style={{ color: "var(--glow)" }}>Ten widgets.</span>
           </h2>
-        </div>
 
-        {/* Full-width gradient card */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 p-8 md:p-10 lg:p-12 rounded-2xl md:rounded-3xl"
-          style={{
-            background: "linear-gradient(135deg, var(--pulse) 0%, var(--pulse-deep) 55%, var(--pulse-deeper) 100%)",
-            alignItems: "center",
-          }}
-        >
-          {/* Text block — always order-1 */}
-          <div className="order-1">
-            <p
+          {/* Body */}
+          <p
+            style={{
+              fontSize: "16px",
+              color: "rgba(255,255,255,0.82)",
+              lineHeight: 1.55,
+              marginBottom: "28px",
+              maxWidth: "560px",
+            }}
+          >
+            Drop any of our 10 production-ready widgets — contact forms, review
+            carousels, booking modals, chatbots — into any site with a single script
+            tag. No backend required.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 mb-8 sm:mb-10">
+            <Link
+              href="https://widgets.devixus.com"
+              target="_blank"
+              className="inline-flex items-center justify-center rounded-full px-6 min-h-[48px] w-full sm:w-auto"
               style={{
-                fontSize: "11px",
-                fontWeight: 600,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "rgba(255,255,255,0.5)",
-                marginBottom: "12px",
-              }}
-            >
-              Devixus Widgets
-            </p>
-            <h3
-              style={{
-                fontFamily: "var(--font-bricolage)",
+                background: "var(--glow)",
+                color: "var(--ink)",
+                fontSize: "15px",
                 fontWeight: 700,
-                fontSize: "clamp(28px, 5vw, 48px)",
-                color: "#fff",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-                marginBottom: "16px",
+                textDecoration: "none",
               }}
             >
-              Devixus Widgets.
-            </h3>
-            <p
+              Try Widgets →
+            </Link>
+            <Link
+              href="https://widgets.devixus.com"
+              target="_blank"
+              className="inline-flex items-center justify-center rounded-full px-6 min-h-[48px] w-full sm:w-auto"
               style={{
-                fontSize: "17px",
-                color: "rgba(255,255,255,0.8)",
-                lineHeight: 1.55,
-                marginBottom: "24px",
+                border: "2px solid rgba(255,255,255,0.3)",
+                color: "#fff",
+                fontSize: "14px",
+                fontWeight: 600,
+                textDecoration: "none",
               }}
             >
-              Drop any of our 10 production-ready widgets — contact forms, review
-              carousels, booking modals, chatbots — into any site with a single
-              script tag. No backend required.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
-              <Link
-                href="https://widgets.devixus.com"
-                target="_blank"
-                className="flex items-center justify-center min-h-[48px] w-full sm:w-auto"
-                style={{
-                  background: "var(--glow)",
-                  color: "var(--ink)",
-                  padding: "12px 24px",
-                  borderRadius: "999px",
-                  fontSize: "15px",
-                  fontWeight: 700,
-                  textDecoration: "none",
-                }}
-              >
-                Try Widgets →
-              </Link>
-              <Link
-                href="https://widgets.devixus.com"
-                target="_blank"
-                className="flex items-center justify-center min-h-[48px] w-full sm:w-auto"
-                style={{
-                  border: "2px solid rgba(255,255,255,0.3)",
-                  color: "#fff",
-                  padding: "10px 24px",
-                  borderRadius: "999px",
-                  fontSize: "14px",
-                  fontWeight: 600,
-                  textDecoration: "none",
-                }}
-              >
-                widgets.devixus.com
-              </Link>
-            </div>
+              widgets.devixus.com
+            </Link>
           </div>
 
-          {/* Code block — order-2, mt-8 when stacked, mt-0 when side by side */}
+          {/* Code block */}
           <div
-            className="order-2 mt-8 md:mt-0 max-w-full"
+            className="rounded-xl p-4 md:p-6 overflow-x-auto"
             style={{
-              background: "rgba(0,0,0,0.45)",
-              borderRadius: "12px",
-              padding: "24px",
+              background: "rgba(0,0,0,0.25)",
               border: "1px solid rgba(255,255,255,0.1)",
-              backdropFilter: "blur(8px)",
-              overflow: "hidden",
             }}
           >
             <div style={{ display: "flex", gap: "6px", marginBottom: "16px" }}>
@@ -149,20 +115,19 @@ export default function WidgetsCard() {
             </div>
             <pre
               style={{
-                fontFamily: "'Courier New', Courier, monospace",
-                fontSize: "12px",
+                fontFamily: "var(--font-mono, 'Courier New', monospace)",
+                fontSize: "13px",
                 lineHeight: 1.7,
                 color: "rgba(255,255,255,0.82)",
                 whiteSpace: "pre-wrap",
                 wordBreak: "break-word",
                 margin: 0,
-                overflowX: "auto",
               }}
             >
               {CODE_SNIPPET}
             </pre>
           </div>
-        </div>
+        </article>
       </div>
     </section>
   );
