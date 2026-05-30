@@ -14,8 +14,12 @@ export default function SectionHeader({
   return (
     <div className={`mb-14 ${className}`}>
       <p
-        className="text-xs font-semibold tracking-widest uppercase mb-3"
-        style={{ color: dark ? "rgba(255,255,255,0.45)" : "var(--g5)" }}
+        className="text-xs font-semibold uppercase mb-3"
+        style={{
+          fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
+          letterSpacing: "0.04em",
+          color: dark ? "rgba(255,255,255,0.6)" : "#3F3F46",
+        }}
       >
         {eyebrow}
       </p>

@@ -49,10 +49,10 @@ function ServiceCard({ service }: { service: Service }) {
 
       <p
         style={{
-          fontFamily: "var(--font-mono, monospace)",
+          fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
           fontSize: "11px",
-          fontWeight: 500,
-          letterSpacing: "0.14em",
+          fontWeight: 600,
+          letterSpacing: "0.04em",
           textTransform: "uppercase",
           color: "var(--pulse)",
           marginBottom: "8px",
@@ -103,10 +103,10 @@ export default function AiSection() {
         <div className="mb-12 md:mb-16">
           <p
             style={{
-              fontFamily: "var(--font-mono, monospace)",
+              fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
               fontSize: "12px",
-              fontWeight: 500,
-              letterSpacing: "0.14em",
+              fontWeight: 600,
+              letterSpacing: "0.04em",
               textTransform: "uppercase",
               color: "#3F3F46",
               marginBottom: "12px",
@@ -145,10 +145,11 @@ export default function AiSection() {
         >
           <p
             style={{
+              fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
               textAlign: "center",
               fontSize: "11px",
               fontWeight: 600,
-              letterSpacing: "0.12em",
+              letterSpacing: "0.04em",
               textTransform: "uppercase",
               color: "#A1A1AA",
               marginBottom: "20px",

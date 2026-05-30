@@ -30,10 +30,10 @@ export default function WidgetsCard() {
               {/* Kicker */}
               <p
                 style={{
-                  fontFamily: "var(--font-mono, monospace)",
+                  fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
                   fontSize: "12px",
                   fontWeight: 600,
-                  letterSpacing: "0.14em",
+                  letterSpacing: "0.04em",
                   textTransform: "uppercase",
                   color: "rgba(255,255,255,0.6)",
                   marginBottom: "16px",

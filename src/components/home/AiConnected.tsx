@@ -147,11 +147,12 @@ export default function AiConnected() {
         <div className="mb-12 md:mb-16">
           <p
             style={{
-              fontFamily: 'var(--font-mono, monospace)',
+              fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
               fontSize: '12px',
-              letterSpacing: '0.18em',
+              fontWeight: 600,
+              letterSpacing: '0.04em',
               textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.35)',
+              color: 'rgba(255,255,255,0.6)',
               marginBottom: '16px',
             }}
           >

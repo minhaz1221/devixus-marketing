@@ -135,11 +135,12 @@ export default function Contact() {
         <div>
           <p
             style={{
+              fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
               fontSize: "11px",
               fontWeight: 600,
-              letterSpacing: "0.12em",
+              letterSpacing: "0.04em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.4)",
+              color: "rgba(255,255,255,0.6)",
               marginBottom: "16px",
             }}
           >

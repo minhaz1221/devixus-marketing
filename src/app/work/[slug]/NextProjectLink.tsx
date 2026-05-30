@@ -30,10 +30,11 @@ export default function NextProjectLink({
       <div>
         <p
           style={{
-            fontFamily: 'var(--font-mono, monospace)',
-            fontSize: '13px',
-            letterSpacing: '0.1em',
-            color: 'rgba(255,255,255,0.4)',
+            fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
+            fontSize: '12px',
+            fontWeight: 600,
+            letterSpacing: '0.04em',
+            color: 'rgba(255,255,255,0.6)',
             textTransform: 'uppercase',
             marginBottom: '12px',
           }}

@@ -173,11 +173,12 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[0] }) {
       <div style={{ padding: "20px 24px" }}>
         <p
           style={{
+            fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
             fontSize: 11,
             fontWeight: 600,
-            letterSpacing: "0.1em",
+            letterSpacing: "0.04em",
             textTransform: "uppercase",
-            color: project.dark ? "rgba(255,255,255,0.4)" : "var(--g5)",
+            color: project.dark ? "rgba(255,255,255,0.6)" : "var(--pulse)",
             marginBottom: 6,
           }}
         >

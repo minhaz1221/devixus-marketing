@@ -187,12 +187,12 @@ function Card({ card }: { card: WorkCard }) {
       >
         <span
           style={{
+            fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
             fontSize: "11px",
             fontWeight: 600,
-            letterSpacing: "0.1em",
+            letterSpacing: "0.04em",
             textTransform: "uppercase",
             color: "var(--pulse)",
-            fontFamily: "var(--font-space)",
           }}
         >
           {card.category}
@@ -283,12 +283,12 @@ function NunhemsCard({ card }: { card: WorkCard }) {
     >
       <span
         style={{
+          fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
           fontSize: "11px",
           fontWeight: 600,
-          letterSpacing: "0.1em",
+          letterSpacing: "0.04em",
           textTransform: "uppercase",
-          color: "rgba(255,255,255,0.55)",
-          fontFamily: "var(--font-space)",
+          color: "rgba(255,255,255,0.6)",
         }}
       >
         {card.category}
@@ -396,12 +396,12 @@ export default function WorkGrid() {
         <div className="mb-12 md:mb-16">
           <p
             style={{
+              fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
               fontSize: "11px",
               fontWeight: 600,
-              letterSpacing: "0.12em",
+              letterSpacing: "0.04em",
               textTransform: "uppercase",
-              color: "#71717A",
-              fontFamily: "var(--font-space)",
+              color: "#3F3F46",
               marginBottom: "14px",
             }}
           >

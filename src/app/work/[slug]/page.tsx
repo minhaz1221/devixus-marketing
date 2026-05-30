@@ -25,9 +25,10 @@ function SectionLabel({ n, text }: { n: string; text: string }) {
   return (
     <p
       style={{
-        fontFamily: 'var(--font-mono, monospace)',
+        fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
         fontSize: '11px',
-        letterSpacing: '0.2em',
+        fontWeight: 600,
+        letterSpacing: '0.04em',
         textTransform: 'uppercase',
         color: 'var(--pulse)',
         marginBottom: '16px',
@@ -94,9 +95,9 @@ export default async function CaseStudyPage({
             >
               <p
                 style={{
-                  fontFamily: 'var(--font-mono, monospace)',
+                  fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
                   fontSize: '12px',
-                  letterSpacing: '0.08em',
+                  letterSpacing: '0.04em',
                   color: 'rgba(255,255,255,0.4)',
                   marginBottom: '32px',
                 }}
@@ -160,7 +161,7 @@ export default async function CaseStudyPage({
 
               <p
                 style={{
-                  fontFamily: 'var(--font-mono, monospace)',
+                  fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
                   fontSize: '13px',
                   color: 'rgba(255,255,255,0.4)',
                   marginTop: '24px',
@@ -302,10 +303,11 @@ export default async function CaseStudyPage({
                   >
                     <p
                       style={{
-                        fontFamily: 'var(--font-mono, monospace)',
+                        fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
                         fontSize: '11px',
+                        fontWeight: 600,
                         color: 'var(--pulse)',
-                        letterSpacing: '0.1em',
+                        letterSpacing: '0.04em',
                         marginBottom: '8px',
                       }}
                     >
@@ -408,9 +410,10 @@ export default async function CaseStudyPage({
             >
               <p
                 style={{
-                  fontFamily: 'var(--font-mono, monospace)',
+                  fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
                   fontSize: '12px',
-                  letterSpacing: '0.15em',
+                  fontWeight: 600,
+                  letterSpacing: '0.04em',
                   textTransform: 'uppercase',
                   color: 'var(--glow)',
                   marginBottom: '24px',
@@ -434,10 +437,11 @@ export default async function CaseStudyPage({
                 >
                   <p
                     style={{
-                      fontFamily: 'var(--font-mono, monospace)',
+                      fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
                       fontSize: '12px',
+                      fontWeight: 600,
                       textTransform: 'uppercase',
-                      letterSpacing: '0.08em',
+                      letterSpacing: '0.04em',
                       color: 'rgba(255,255,255,0.4)',
                       marginBottom: '4px',
                     }}
@@ -462,9 +466,10 @@ export default async function CaseStudyPage({
             >
               <p
                 style={{
-                  fontFamily: 'var(--font-mono, monospace)',
+                  fontFamily: 'var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif',
                   fontSize: '12px',
-                  letterSpacing: '0.15em',
+                  fontWeight: 600,
+                  letterSpacing: '0.04em',
                   textTransform: 'uppercase',
                   color: 'var(--pulse)',
                   marginBottom: '24px',
