@@ -1,0 +1,80 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   Admin design tokens — scoped to `.admin-shell`.
+   Imported ONLY from src/app/admin/layout.tsx so these never leak onto the
+   public marketing site. Values map shadcn/ui's semantic tokens onto the
+   Devixus brand palette (ink / pulse / glow / mist), NOT shadcn defaults.
+   The `--color-*` / `--radius-*` utility mappings live in globals.css
+   (`@theme inline`); this file supplies the runtime values they resolve to.
+   ────────────────────────────────────────────────────────────────────────── */
+
+.admin-shell {
+  /* Surfaces */
+  --background: #f5f4f0;            /* mist */
+  --foreground: #0a0a0b;            /* ink  */
+  --card: #ffffff;
+  --card-foreground: #0a0a0b;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0b;
+
+  /* Brand */
+  --primary: #5c4bff;              /* pulse */
+  --primary-foreground: #ffffff;
+  --accent: #c9ff3b;              /* glow  */
+  --accent-foreground: #0a0a0b;
+
+  /* Neutrals */
+  --secondary: #edeae2;           /* bone */
+  --secondary-foreground: #0a0a0b;
+  --muted: #edeae2;
+  --muted-foreground: #52525b;    /* g6 */
+
+  /* States */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
+  /* Lines + focus */
+  --border: rgba(10, 10, 11, 0.08);
+  --input: rgba(10, 10, 11, 0.12);
+  --ring: #5c4bff;
+
+  /* Charts (brand-tinted) */
+  --chart-1: #5c4bff;
+  --chart-2: #4232e6;
+  --chart-3: #3621b8;
+  --chart-4: #c9ff3b;
+  --chart-5: #a1a1aa;
+
+  /* Radius (consumed by @theme inline --radius-* in globals.css) */
+  --radius: 0.625rem;
+
+  /* Sidebar (dark ink rail) */
+  --sidebar: #0a0a0b;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #5c4bff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(92, 75, 255, 0.15);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #5c4bff;
+
+  /* Semantic helpers for the custom nav */
+  --sidebar-active-bg: rgba(92, 75, 255, 0.15);
+  --sidebar-active-border: #5c4bff;
+
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  min-height: 100dvh;
+}
+
+/* Default border colour for bare `border` usage inside admin components. */
+.admin-shell *,
+.admin-shell ::before,
+.admin-shell ::after {
+  border-color: var(--border);
+}
+
+/* Keyboard focus ring parity with shadcn's outline-ring expectations. */
+.admin-shell :focus-visible {
+  outline-color: var(--ring);
+}
